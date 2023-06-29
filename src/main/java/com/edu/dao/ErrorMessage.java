@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class ErrorMessage {
 	private HttpStatus httpStatus;
+	
 	private String message;
 
 	public ErrorMessage() {
@@ -32,5 +33,5 @@ public class ErrorMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
+	
 }

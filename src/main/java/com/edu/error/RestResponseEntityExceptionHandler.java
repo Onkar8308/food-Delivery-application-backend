@@ -13,9 +13,11 @@ import com.edu.dao.ErrorMessage;
 @ControllerAdvice
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler{
-@ExceptionHandler(GlobalException.class)
-public ResponseEntity<ErrorMessage>notFoundException(GlobalException exception,WebRequest request) {
-	ErrorMessage message=new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
-	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-   }
+	
+	@ExceptionHandler(GlobalException.class)
+	public ResponseEntity<ErrorMessage>notFoundException(GlobalException exception, WebRequest request){
+		ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+		
+	}
 }

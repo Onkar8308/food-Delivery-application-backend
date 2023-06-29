@@ -3,6 +3,8 @@ package com.edu.dao;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -24,6 +26,9 @@ public class Orders {
 		ordersdate = new Date();
 	}
 	
+	
+	@NotEmpty(message = "Please enter order status")
+	@NotBlank(message = "Please enter order status")
 	@Column(nullable = false)
 	private String ordersstatus;
 

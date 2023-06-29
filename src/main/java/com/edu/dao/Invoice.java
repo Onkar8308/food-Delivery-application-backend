@@ -2,7 +2,11 @@ package com.edu.dao;
 
 import java.util.Date;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -24,9 +28,11 @@ public class Invoice {
 		ordersdate = new Date();
 	}
 	
+	@Min(value = 1, message = "item cost cannot be empty")
 	@Column(nullable = false)
-	private double invoicetotalcost;
+	private float invoicetotalcost;
 	
+	@Min(value = 1, message = "item cannot be empty")
 	@Column(nullable = false)
 	private int invoicetotalitem;
 	
@@ -41,9 +47,8 @@ public class Invoice {
 	}
 
 
-	public Invoice(Date ordersdate, double invoicetotalcost, int invoicetotalitem) {
+	public Invoice(float invoicetotalcost, int invoicetotalitem) {
 		super();
-		this.ordersdate = ordersdate;
 		this.invoicetotalcost = invoicetotalcost;
 		this.invoicetotalitem = invoicetotalitem;
 	}
@@ -69,12 +74,12 @@ public class Invoice {
 	}
 
 
-	public double getInvoicetotalcost() {
+	public float getInvoicetotalcost() {
 		return invoicetotalcost;
 	}
 
 
-	public void setInvoicetotalcost(double invoicetotalcost) {
+	public void setInvoicetotalcost(float invoicetotalcost) {
 		this.invoicetotalcost = invoicetotalcost;
 	}
 
