@@ -10,6 +10,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+//This is the invoice file
+
 @Entity
 public class Invoice {
 
