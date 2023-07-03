@@ -42,14 +42,14 @@ public class RestaurantAddress {
 	@Size(min = 6, max = 6, message = "Pincode must be 6 digit")
 //	@Min(value = 6, message = "Pincode must be 6 digit")
 //	@Max(value = 6, message = "Pincode must be 6 digit")
-	private Integer pincode;
+	private String pincode;
 	
 	public RestaurantAddress() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public RestaurantAddress(String area, String city, String state, String country, int pincode) {
+	public RestaurantAddress(String area, String city, String state, String country, String pincode) {
 		super();
 		this.area = area;
 		this.city = city;
@@ -98,11 +98,11 @@ public class RestaurantAddress {
 		this.country = country;
 	}
 
-	public int getPincode() {
+	public String getPincode() {
 		return pincode;
 	}
 
-	public void setPincode(int pincode) {
+	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
 

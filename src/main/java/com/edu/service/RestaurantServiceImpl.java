@@ -20,7 +20,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	RestaurantRepo restaurantRepo;
 
 	@Override
-	public Restaurant addRestaurant(@Valid Restaurant restaurant) {
+	public Restaurant addRestaurant( Restaurant restaurant) {
 		// TODO Auto-generated method stub
 		return restaurantRepo.save(restaurant);
 	}

@@ -1,10 +1,18 @@
 package com.edu.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -45,6 +53,16 @@ public class Restaurant {
 	@NotEmpty(message = "contact number should not be empty")
 	@Column(name = "contact_number")
 	private String contactNumber;
+	
+	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
+	private List<Item> itemList = new ArrayList<>() ;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "restaurant_address_id",referencedColumnName ="addressid" )
+	private RestaurantAddress restaurantAdd;
+	
+	
+	
 	
 	
 	
