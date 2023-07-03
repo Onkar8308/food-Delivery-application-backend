@@ -6,15 +6,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.dao.Customer;
 import com.edu.dao.CustomerAddress;
 import com.edu.error.GlobalException;
 import com.edu.repository.CustomerAddressRepository;
+import com.edu.repository.CustomerRepository;
 
 @Service
 public class CustomerAddressServiceImpl implements CustomerAddressService{
 	
 	@Autowired
 	private CustomerAddressRepository customerAddressRepository;
+	@Autowired
+	private CustomerRepository customerRepository;
 	
 
 	@Override
@@ -60,6 +64,16 @@ public class CustomerAddressServiceImpl implements CustomerAddressService{
 			customer.setState(customeraddress.getState());
 		}
 		return customerAddressRepository.save(customer);
+	}
+
+
+	@Override
+	public CustomerAddress customerAssigncustomeraddress(Integer custid, Integer addid) {
+		// TODO Auto-generated method stub
+		CustomerAddress cuadd =customerAddressRepository.findById(addid).get();
+		Customer cus=customerRepository.findById(custid).get();
+		cuadd.customerAssigncustomeraddress(cus);
+		 return customerAddressRepository.save(cuadd);
 	}
 
 }

@@ -1,10 +1,14 @@
 package com.edu.dao;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -27,6 +31,17 @@ public class Customer {
 	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password")
 	private String password;
 	
+	@OneToMany(mappedBy="cust")
+	Set<CustomerAddress> cob = new HashSet<CustomerAddress>();
+	
+	public Set<CustomerAddress> getCob() {
+		return cob;
+	}
+
+	public void setCob(Set<CustomerAddress> cob) {
+		this.cob = cob;
+	}
+
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub

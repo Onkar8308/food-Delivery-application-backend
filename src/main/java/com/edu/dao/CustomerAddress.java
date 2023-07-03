@@ -1,13 +1,28 @@
 package com.edu.dao;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class CustomerAddress {
@@ -38,10 +53,19 @@ public class CustomerAddress {
 //	@NotEmpty(message = "Please enter pincode")
 //	@NotBlank(message = "Please enter pincode")
 	@Column(length = 6, nullable = false)
+
 	@Size(min = 6, max = 6, message = "Pincode must be 6 digit")
 	//@Min(value = 6, message = "Pincode must be 6 digit")
 	//@Max(value = 7, message = "Pincode must be 6 digit")
 	private String pincode;
+
+	//private int pincode;
+
+	
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customerid" , referencedColumnName="customerid")
+	Customer cust;
 	
 	public CustomerAddress() {
 		super();
@@ -110,6 +134,14 @@ public class CustomerAddress {
 		return "CustomerAddress [addressid=" + addressid + ", area=" + area + ", city=" + city + ", state=" + state
 				+ ", country=" + country + ", pincode=" + pincode + "]";
 	}
+	
+	public void customerAssigncustomeraddress(Customer cob) {
+		// TODO Auto-generated method stub
+		this.cust = cob;
+		
+	}
+
+	
 	
 	
 }
