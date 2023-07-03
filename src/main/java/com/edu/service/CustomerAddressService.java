@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.edu.dao.CustomerAddress;
 import com.edu.error.GlobalException;
 
-@Service
 public interface CustomerAddressService {
 
 	public CustomerAddress saveCustomerAddress(CustomerAddress customeraddress);
@@ -17,5 +16,9 @@ public interface CustomerAddressService {
 	public void deleteCustomerAddressById(Integer addressid) throws GlobalException;
 
 	public CustomerAddress updateCustomerAddressById(Integer addressid, CustomerAddress customeraddress) throws GlobalException;
+
+	
+
+	CustomerAddress customerAssigncustomeraddress(Integer custid, Integer addid);
 
 }

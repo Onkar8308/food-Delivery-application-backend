@@ -8,8 +8,6 @@ import com.edu.dao.Item;
 import com.edu.error.GlobalException;
 
 
-
-@Service
 public interface ItemService {
 
 	public Item saveItem(Item item);

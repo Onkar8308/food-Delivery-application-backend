@@ -59,4 +59,9 @@ public class CustomerAddressController {
 		return customerAddressService.updateCustomerAddressById(addressid,customeraddress);
 	}
 	
+	@PutMapping("/customerAssigncustomeraddress/customer/{custid}/customerAddress/{addid}")
+	public CustomerAddress customerAssigncustomeraddress(@PathVariable Integer custid, @PathVariable Integer addid) {
+		return customerAddressService.customerAssigncustomeraddress(custid, addid);
+	}
+	
 }
