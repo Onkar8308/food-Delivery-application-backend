@@ -5,10 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class CustomerAddress {
@@ -39,16 +38,17 @@ public class CustomerAddress {
 //	@NotEmpty(message = "Please enter pincode")
 //	@NotBlank(message = "Please enter pincode")
 	@Column(length = 6, nullable = false)
-	@Min(value = 6, message = "Pincode must be 6 digit")
-	@Max(value = 6, message = "Pincode must be 6 digit")
-	private int pincode;
+	@Size(min = 6, max = 6, message = "Pincode must be 6 digit")
+	//@Min(value = 6, message = "Pincode must be 6 digit")
+	//@Max(value = 7, message = "Pincode must be 6 digit")
+	private String pincode;
 	
 	public CustomerAddress() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerAddress(String area, String city, String state, String country, int pincode) {
+	public CustomerAddress(String area, String city, String state, String country, String pincode) {
 		super();
 		this.area = area;
 		this.city = city;
@@ -97,11 +97,11 @@ public class CustomerAddress {
 		this.country = country;
 	}
 
-	public int getPincode() {
+	public String getPincode() {
 		return pincode;
 	}
 
-	public void setPincode(int pincode) {
+	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
 
