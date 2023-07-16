@@ -9,7 +9,7 @@ import com.edu.error.GlobalException;
 
 public interface RestaurantService {
 
-	public Restaurant addRestaurant(@Valid Restaurant restaurant);
+	public Restaurant addRestaurant(Restaurant restaurant);
 
 	public List<Restaurant> getAllRestaurant();
 

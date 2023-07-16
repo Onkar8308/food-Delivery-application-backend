@@ -28,7 +28,7 @@ public class Customer {
 	private String customername;
 	@NotNull(message = "Enter Customer Mobile Number") 
 	@Column(length = 10 ,  nullable = false)
-	private int customermobilenumber;
+	private long customermobilenumber;
 	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
 	@NotNull(message = "Enter Customer Email Id") @Column(unique = true)
 	private String customeremail;
@@ -71,11 +71,11 @@ public class Customer {
 		this.customername = customername;
 	}
 
-	public int getCustomermobilenumber() {
+	public long getCustomermobilenumber() {
 		return customermobilenumber;
 	}
 
-	public void setCustomermobilenumber(int customermobilenumber) {
+	public void setCustomermobilenumber(long customermobilenumber) {
 		this.customermobilenumber = customermobilenumber;
 	}
 

@@ -39,10 +39,10 @@ public class Item {
 //	private Restaurant restaurantId;
 	
 	
-	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cart_id",referencedColumnName = "foodCart_Id")
-	private FoodCart cart;
+//	@JsonIgnore
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "cart_id",referencedColumnName = "foodCart_Id")
+//	private FoodCart cart;
 
 	public Item() {
 		super();
