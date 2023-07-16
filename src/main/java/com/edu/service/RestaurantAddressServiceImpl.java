@@ -54,6 +54,8 @@ public class RestaurantAddressServiceImpl implements RestaurantAddressService {
 			restaurant.setCountry(restaurantaddress.getCountry());
 			restaurant.setPincode(restaurantaddress.getPincode());
 			restaurant.setState(restaurantaddress.getState());
+			restaurant.setPic(restaurantaddress.getPic());
+			restaurant.setRestname(restaurantaddress.getRestname());
 		}
 		
 		return restaurantAddressRepository.save(restaurant);

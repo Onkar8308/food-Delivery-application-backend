@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.edu.dao.Item;
 import com.edu.error.GlobalException;
 import com.edu.service.ItemService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ItemController {
 
@@ -50,5 +52,18 @@ public class ItemController {
 			@RequestBody Item item) throws GlobalException {
 		return itemService.updateItemById(itemid, item);
 	}
+
+	//http://localhost:8990/itemAssignedRestaurantAddress/{itemid}/{restid}
+	@PutMapping("/itemAssignedRestaurantAddress/item/{itemid}/restaurantAddress/{restid}")
+	public Item itemAssignedRestaurantAddress(@PathVariable Integer itemid, @PathVariable Integer restid) {
+		return itemService.itemAssignedRestaurantAddress(itemid, restid);
+	}
+	
+	//http://localhost:8990/getItemByRestId/{addressid}
+	@GetMapping("/getItemByRestId/{addressid}")
+	public List<Item> getItemByRestId(@PathVariable Integer addressid) throws GlobalException {
+		return itemService.getItemByRestId(addressid);
+	}
+	
 
 }

@@ -1,12 +1,18 @@
 package com.edu.dao;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
+import com.edu.service.RestaurantAddressService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Item {
@@ -27,19 +33,57 @@ public class Item {
 
 	@Column(nullable = false)
 	private Double itemcost;
+	
+	@Column(nullable = true)
+	private String itemimage;
+	
+	
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="addressid" , referencedColumnName="addressid")
+	RestaurantAddress rest;
+	
+
 
 	public Item() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Item(Integer itemid, String itemname, String itemstatus, Double itemcost) {
+	
+
+	public Item(Integer itemid,String itemname,String itemstatus,Double itemcost, String itemimage) {
 		super();
-		this.itemid = itemid;
 		this.itemname = itemname;
 		this.itemstatus = itemstatus;
 		this.itemcost = itemcost;
+		this.itemimage = itemimage;
 	}
+	
+
+	public String getItemimage() {
+		return itemimage;
+	}
+
+
+
+	public void setItemimage(String itemimage) {
+		this.itemimage = itemimage;
+	}
+
+
+
+	public RestaurantAddress getRest() {
+		return rest;
+	}
+
+
+
+	public void setRest(RestaurantAddress rest) {
+		this.rest = rest;
+	}
+
+
 
 	public Integer getItemid() {
 		return itemid;
@@ -73,10 +117,18 @@ public class Item {
 		this.itemcost = itemcost;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Item [itemid=" + itemid + ", itemname=" + itemname + ", itemstatus=" + itemstatus + ", itemcost="
-				+ itemcost + "]";
+				+ itemcost + ", itemimage=" + itemimage + "]";
 	}
 
+
+
+	public void itemAssignedRestaurantAddress(RestaurantAddress dob) {
+		// TODO Auto-generated method stub
+		this.rest = dob;
+		
+	}
 }
