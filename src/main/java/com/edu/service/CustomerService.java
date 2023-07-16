@@ -16,4 +16,9 @@ public interface CustomerService {
 
 	Customer updateCustomerById(Integer customerid, @Valid Customer customer);
 
+	List<Customer> findByCustomernameAndCustomerpassword(String cname, String cpass);
+
+	Customer getCustomerByEmail(String email, String password);
+
+
 }

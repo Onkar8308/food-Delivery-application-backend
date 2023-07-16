@@ -19,15 +19,20 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerid;
-	@NotNull(message = "Enter Customer Name") @Column(nullable = false)
+	//@NotNull(message = "Enter Customer Name") 
+	@Column(nullable = false)
 	private String customername;
-	@NotNull(message = "Enter Customer Mobile Number") 
+	//@NotNull(message = "Enter Customer Mobile Number") 
 	@Column(length = 10 ,  nullable = false)
-	private int customermobilenumber;
+	private long customermobilenumber;
+	
 	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
-	@NotNull(message = "Enter Customer Email Id") @Column(unique = true)
+	//@NotNull(message = "Enter Customer Email Id") 
+	//@Pattern(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
+	@Column(unique = true)
 	private String customeremail;
-	@NotNull(message = "Enter password")
+	
+	//@NotNull(message = "Enter password")
 	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password")
 	private String password;
 	
@@ -47,7 +52,7 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String customername,int customermobilenumber,String customeremail, String password) {
+	public Customer(String customername,long customermobilenumber,String customeremail, String password) {
 		super();
 		this.customername = customername;
 		this.customermobilenumber = customermobilenumber;
@@ -63,11 +68,11 @@ public class Customer {
 		this.customername = customername;
 	}
 
-	public int getCustomermobilenumber() {
+	public long getCustomermobilenumber() {
 		return customermobilenumber;
 	}
 
-	public void setCustomermobilenumber(int customermobilenumber) {
+	public void setCustomermobilenumber(long customermobilenumber) {
 		this.customermobilenumber = customermobilenumber;
 	}
 
@@ -90,12 +95,9 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [customerid=" + customerid + ", customername=" + customername + ", customermobilenumber="
-				+ customermobilenumber + ", customeremail=" + customeremail + ", password=" + password + "]";
+				+ customermobilenumber + ", customeremail=" + customeremail + ", password=" + password + ", cob=" + cob
+				+ "]";
 	}
-
-	
-	
-	
 	
 	
 
