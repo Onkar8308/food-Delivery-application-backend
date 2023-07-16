@@ -42,6 +42,8 @@ public class Item {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="addressid" , referencedColumnName="addressid")
 	RestaurantAddress rest;
+	
+
 
 	public Item() {
 		super();
@@ -52,7 +54,6 @@ public class Item {
 
 	public Item(Integer itemid,String itemname,String itemstatus,Double itemcost, String itemimage) {
 		super();
-		this.itemid = itemid;
 		this.itemname = itemname;
 		this.itemstatus = itemstatus;
 		this.itemcost = itemcost;

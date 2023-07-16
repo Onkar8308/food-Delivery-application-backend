@@ -13,6 +13,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -80,7 +81,12 @@ public class RestaurantAddress {
 //	@NotEmpty(message = "Please enter pincode")
 //	@NotBlank(message = "Please enter pincode")
 	@Column(length = 6, nullable = false)
-	private int pincode;
+
+	private Integer pincode;
+
+	@Size(min = 6, max = 6, message = "Pincode must be 6 digit")
+//	@Min(value = 6, message = "Pincode must be 6 digit")
+//	@Max(value = 6, message = "Pincode must be 6 digit")
 	
 	public RestaurantAddress() {
 		super();
@@ -88,6 +94,7 @@ public class RestaurantAddress {
 	}
 
 	public RestaurantAddress(Integer addressid,String restname, String pic,String area,String city, String state, String country, int pincode) {
+
 		super();
 		this.addressid = addressid;
 		this.restname = restname;
@@ -139,11 +146,11 @@ public class RestaurantAddress {
 		this.country = country;
 	}
 
-	public int getPincode() {
+	public Integer getPincode() {
 		return pincode;
 	}
 
-	public void setPincode(int pincode) {
+	public void setPincode(Integer pincode) {
 		this.pincode = pincode;
 	}
 
