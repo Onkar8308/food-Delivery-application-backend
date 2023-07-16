@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.dao.Item;
+import com.edu.dao.RestaurantAddress;
 import com.edu.error.GlobalException;
 import com.edu.repository.ItemRepository;
+import com.edu.repository.RestaurantAddressRepository;
 
 
 @Service
@@ -17,6 +19,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired
+	private RestaurantAddressRepository restaurantAddressRepository;
 
 	@Override
 	public Item saveItem(Item item) {
@@ -54,8 +59,31 @@ public class ItemServiceImpl implements ItemService {
 			ite.setItemname(item.getItemname());
 			ite.setItemstatus(item.getItemstatus());
 			ite.setItemcost(item.getItemcost());
+			ite.setItemimage(item.getItemimage());
 		}
 		return itemRepository.save(ite);
+	}
+
+	/*
+	 * Employee eob=employeerepository.findById(empid).get(); 
+	 * Department
+	 * dob=departmentRepository.findById(deptid).get();
+	 * eob.employeeAssignDepartment(dob); return employeerepository.save(eob);
+	 */
+	
+	@Override
+	public Item itemAssignedRestaurantAddress(Integer itemid, Integer restid) {
+		// TODO Auto-generated method stub
+		Item eob=itemRepository.findById(itemid).get();
+		RestaurantAddress dob= restaurantAddressRepository.findById(restid).get();
+		 eob.itemAssignedRestaurantAddress(dob);
+		 return itemRepository.save(eob);
+	}
+
+	@Override
+	public List<Item> getItemByRestId(Integer addressid) {
+		// TODO Auto-generated method stub
+		return itemRepository.getItemByRestId(addressid);
 	}
 
 }

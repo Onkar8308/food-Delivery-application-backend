@@ -18,5 +18,9 @@ public interface ItemService {
 
 	public Item updateItemById(Integer itemid, Item item) throws GlobalException;
 
+	public Item itemAssignedRestaurantAddress(Integer itemid, Integer restid);
+
+	public List<Item> getItemByRestId(Integer restid);
+
 }
 
