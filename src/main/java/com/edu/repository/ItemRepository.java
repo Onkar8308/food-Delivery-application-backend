@@ -13,7 +13,7 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 
 	List<Item> findItemByitemname(String itemname);
 
-	@Query(value="select * from item where addressid=:addressid",nativeQuery = true)
-	List<Item> getItemByRestId(Integer addressid);
+	@Query(value="select * from item where restid=:restid",nativeQuery = true)
+	List<Item> getItemByRestId(Integer restid);
 	
 }

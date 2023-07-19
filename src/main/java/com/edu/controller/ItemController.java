@@ -2,6 +2,7 @@ package com.edu.controller;
 
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,16 +54,21 @@ public class ItemController {
 		return itemService.updateItemById(itemid, item);
 	}
 
-	//http://localhost:8990/itemAssignedRestaurantAddress/{itemid}/{restid}
-	@PutMapping("/itemAssignedRestaurantAddress/item/{itemid}/restaurantAddress/{restid}")
+	//http://localhost:8990/itemAssignedRestaurant/item/{itemid}/restaurant/{restid}
+	@PutMapping("/itemAssignedRestaurant/item/{itemid}/restaurant/{restid}")
 	public Item itemAssignedRestaurantAddress(@PathVariable Integer itemid, @PathVariable Integer restid) {
-		return itemService.itemAssignedRestaurantAddress(itemid, restid);
+		return itemService.itemAssignedRestaurant(itemid, restid);
 	}
 	
 	//http://localhost:8990/getItemByRestId/{addressid}
-	@GetMapping("/getItemByRestId/{addressid}")
-	public List<Item> getItemByRestId(@PathVariable Integer addressid) throws GlobalException {
-		return itemService.getItemByRestId(addressid);
+	@GetMapping("/getItemByRestId/{restid}")
+	public List<Item> getItemByRestId(@PathVariable Integer restid) throws GlobalException {
+		return itemService.getItemByRestId(restid);
+	}
+	
+	@PostMapping("/saveItemByRestId/{restid}")
+	public Item saveItemByRestId(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
+		return itemService.saveItemByRestId(item,restid);
 	}
 	
 

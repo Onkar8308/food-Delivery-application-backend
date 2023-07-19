@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import com.edu.service.RestaurantAddressService;
+import com.edu.service.RestaurantService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -40,8 +40,8 @@ public class Item {
 	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="addressid" , referencedColumnName="addressid")
-	RestaurantAddress rest;
+	@JoinColumn(name="restid" , referencedColumnName="restid")
+	Restaurant rest;
 	
 
 
@@ -52,7 +52,7 @@ public class Item {
 
 	
 
-	public Item(Integer itemid,String itemname,String itemstatus,Double itemcost, String itemimage) {
+	public Item(String itemname,String itemstatus,Double itemcost, String itemimage) {
 		super();
 		this.itemname = itemname;
 		this.itemstatus = itemstatus;
@@ -73,14 +73,18 @@ public class Item {
 
 
 
-	public RestaurantAddress getRest() {
+	public Restaurant getRest() {
 		return rest;
 	}
 
 
 
-	public void setRest(RestaurantAddress rest) {
+	public void setRest(Restaurant rest) {
 		this.rest = rest;
+		
+		if(!rest.getItem().contains(this)) {
+			rest.getItem().add(this);
+		}
 	}
 
 
@@ -126,7 +130,7 @@ public class Item {
 
 
 
-	public void itemAssignedRestaurantAddress(RestaurantAddress dob) {
+	public void itemAssignedRestaurantAddress(Restaurant dob) {
 		// TODO Auto-generated method stub
 		this.rest = dob;
 		

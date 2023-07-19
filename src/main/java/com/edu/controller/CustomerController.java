@@ -69,6 +69,11 @@ public class CustomerController {
 	public Customer getCustomerByEmail(@PathVariable("email") String email,@PathVariable("password") String password) {
 		return customerService.getCustomerByEmail(email,password);
 	}
+	
+	@GetMapping("/getCustomerById/{custid}")
+	public Customer getCustomerById(@PathVariable("custid") Integer customerid) {
+		return customerService.getCustomerById(customerid);
+	}
 
 }
 

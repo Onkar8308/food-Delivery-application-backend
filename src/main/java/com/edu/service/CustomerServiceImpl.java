@@ -64,6 +64,12 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.getCustomerByEmail(email,password);
 	}
 
+	@Override
+	public Customer getCustomerById(Integer customerid) {
+		// TODO Auto-generated method stub
+		return customerRepository.findById(customerid).get();
+	}
+
 
 
 }

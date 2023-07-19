@@ -20,5 +20,7 @@ public interface CustomerService {
 
 	Customer getCustomerByEmail(String email, String password);
 
+	public Customer getCustomerById(Integer customerid);
+
 
 }

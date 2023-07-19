@@ -1,17 +1,21 @@
 package com.edu.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.dao.Item;
-import com.edu.dao.RestaurantAddress;
+import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
 import com.edu.repository.ItemRepository;
-import com.edu.repository.RestaurantAddressRepository;
+import com.edu.repository.RestaurantRepository;
 
 
 @Service
@@ -21,7 +25,7 @@ public class ItemServiceImpl implements ItemService {
 	private ItemRepository itemRepository;
 	
 	@Autowired
-	private RestaurantAddressRepository restaurantAddressRepository;
+	private RestaurantRepository restaurantRepository;
 
 	@Override
 	public Item saveItem(Item item) {
@@ -72,10 +76,10 @@ public class ItemServiceImpl implements ItemService {
 	 */
 	
 	@Override
-	public Item itemAssignedRestaurantAddress(Integer itemid, Integer restid) {
+	public Item itemAssignedRestaurant(Integer itemid, Integer restid) {
 		// TODO Auto-generated method stub
 		Item eob=itemRepository.findById(itemid).get();
-		RestaurantAddress dob= restaurantAddressRepository.findById(restid).get();
+		Restaurant dob= restaurantRepository.findById(restid).get();
 		 eob.itemAssignedRestaurantAddress(dob);
 		 return itemRepository.save(eob);
 	}
@@ -85,5 +89,34 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemRepository.getItemByRestId(addressid);
 	}
+
+	@Override
+	public Item saveItemByRestId(Item item, Integer restid) throws GlobalException {
+		// TODO Auto-generated method stub
+		Optional<Restaurant> res = restaurantRepository.findById(restid);
+		
+		if(!res.isPresent()) {
+			throw new GlobalException(restid+ " is not present");
+		}
+		else {
+//			Item i 
+			Restaurant restaurant = restaurantRepository.findById(restid).get();
+			List<Item> list = restaurant.getItem();
+			if(list.isEmpty()){
+				List<Item> newList = new ArrayList<>();
+				newList.add(item);
+				restaurant.setItem(newList);
+				restaurantRepository.save(restaurant);
+				return item;
+				}
+			else {
+				list.add(item);
+				restaurantRepository.save(restaurant);
+				return item;
+			}
+		}
+	}
+
+	
 
 }

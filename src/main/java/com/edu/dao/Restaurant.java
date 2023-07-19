@@ -1,102 +1,165 @@
 package com.edu.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
+
+import java.util.*;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class Restaurant {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(length = 10,name = "restaurant_id")
-	private Integer  restaurantId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer restid;
 	
-	@NonNull
-	@NotBlank(message = "Restaurant name should not be blank")
-	@NotEmpty(message = "Restaurant name should not be empty")
-	@Column(length = 20,name = "restaurant_name")
-	private String restaurantName;
+	@NotBlank(message="Please enter name")
+	@Column(nullable = false)
+	private String restname;
 	
-	@NonNull
 	@NotBlank(message = "Manager name should not be blank")
 	@NotEmpty(message = "Manager name should not be empty")
-	@Column(length = 20,name = "manager_name")
+	@Column(length = 20, nullable = false)
 	private String managerName;
 	
-	@NonNull
 	@NotBlank(message = "contact number should not be blank")
 	@NotEmpty(message = "contact number should not be empty")
-	@Column(name = "contact_number")
+	@Column(nullable = false)
 	private String contactNumber;
 	
-	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
-	private List<Item> itemList = new ArrayList<>() ;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "restaurant_address_id",referencedColumnName ="addressid" )
-	private RestaurantAddress restaurantAdd;
+//	@JsonIgnore
+	@OneToMany(mappedBy="rest")
+	List<Item> item = new ArrayList<Item>();
+	
 	
 	
 
+	public List<Item> getItem() {
+		return item;
+	}
+
+	public void setItem(List<Item> item) {
+		this.item = item;
+	}
+
+	public String getRestname() {
+		return restname;
+	}
+
+	public void setRestname(String restname) {
+		this.restname = restname;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+	@Column(nullable = true)
+	private String pic;
+	
+	@NotEmpty(message = "Please enter area")
+	@NotBlank(message = "Please enter area")
+	@Column(nullable = false)
+	private String area;
+	
+	@NotEmpty(message = "Please enter city")
+	@NotBlank(message = "Please enter city")
+	@Column(nullable = false)
+	private String city;
+	
+	@NotEmpty(message = "Please enter state")
+	@NotBlank(message = "Please enter state")
+	@Column(nullable = false)
+	private String state;
+	
+	@NotEmpty(message = "Please enter country")
+	@NotBlank(message = "Please enter country")
+	@Column(nullable = false)
+	private String country;
+	
+	@NotEmpty(message = "Please enter pincode")
+	@NotBlank(message = "Please enter pincode")
+	@Length(min = 6, max = 6, message = "6 digit only")
+	@Column(length = 6, nullable = false)
+	private String pincode;
+
+	
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	
-	public Restaurant(Integer restaurantId,String restaurantName, String managerName, String contactNumber,
-			List<Item> itemList, RestaurantAddress restaurantAdd) {
+
+	public Restaurant( String restname, String managerName, String contactNumber, String pic, String area,String city,
+			String state, String country, String pincode) {
 		super();
-		this.restaurantId = restaurantId;
-		this.restaurantName = restaurantName;
+		this.restname = restname;
 		this.managerName = managerName;
 		this.contactNumber = contactNumber;
-		this.itemList = itemList;
-		this.restaurantAdd = restaurantAdd;
+		this.pic = pic;
+		this.area = area;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.pincode = pincode;
 	}
 
-	
-	@Override
-	public String toString() {
-		return "Restaurant [restaurantId=" + restaurantId + ", restaurantName=" + restaurantName + ", managerName="
-				+ managerName + ", contactNumber=" + contactNumber + ", itemList=" + itemList + ", restaurantAdd="
-				+ restaurantAdd + "]";
+	public Integer getrestid() {
+		return restid;
 	}
 
-
-	public Integer getRestaurantId() {
-		return restaurantId;
+	public void setrestid(Integer restid) {
+		this.restid = restid;
 	}
 
-	public void setRestaurantId(Integer restaurantId) {
-		this.restaurantId = restaurantId;
+	public String getArea() {
+		return area;
 	}
 
-	public String getRestaurantName() {
-		return restaurantName;
+	public void setArea(String area) {
+		this.area = area;
 	}
 
-	public void setRestaurantName(String restaurantName) {
-		this.restaurantName = restaurantName;
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getManagerName() {
@@ -115,26 +178,19 @@ public class Restaurant {
 		this.contactNumber = contactNumber;
 	}
 
-	public List<Item> getItemList() {
-		return itemList;
+	public String getPincode() {
+		return pincode;
 	}
 
-	public void setItemList(List<Item> itemList) {
-		this.itemList = itemList;
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
 	}
 
-	public RestaurantAddress getRestaurantAdd() {
-		return restaurantAdd;
+	@Override
+	public String toString() {
+		return "Restaurant [restid=" + restid + ", restname=" + restname + ", managerName=" + managerName
+				+ ", contactNumber=" + contactNumber + ", item=" + item + ", pic=" + pic + ", area=" + area + ", city="
+				+ city + ", state=" + state + ", country=" + country + ", pincode=" + pincode + "]";
 	}
-
-	public void setRestaurantAdd(RestaurantAddress restaurantAdd) {
-		this.restaurantAdd = restaurantAdd;
-	}
 	
-	
-	
-	
-	
-	
-
 }
