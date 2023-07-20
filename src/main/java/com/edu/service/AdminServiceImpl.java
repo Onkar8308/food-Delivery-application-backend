@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.dao.Admin;
+import com.edu.dao.Customer;
 import com.edu.error.GlobalException;
 import com.edu.repository.AdminRepository;
 
@@ -55,6 +56,18 @@ public class AdminServiceImpl implements AdminService{
 		}
 		
 		return adminRepository.save(a);
+	}
+
+	@Override
+	public Admin getAdminById(Integer adminid) {
+		// TODO Auto-generated method stub
+		return adminRepository.findById(adminid).get();
+	}
+
+	@Override
+	public Admin getAdminByusername(String username, String password) {
+		// TODO Auto-generated method stub
+		return adminRepository.getAdminByusername(username,password);
 	}
 
 	

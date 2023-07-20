@@ -13,7 +13,7 @@ public class Admin {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer adminid;
 	
 	@Column(length = 40, nullable = false)
 	@NotBlank(message = "Username cannot be blank")
@@ -37,11 +37,11 @@ public class Admin {
 	}
 
 	public Integer getId() {
-		return id;
+		return adminid;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.adminid = id;
 	}
 
 	public String getUsername() {
@@ -62,7 +62,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "Admin [id=" + adminid + ", username=" + username + ", password=" + password + "]";
 	}
 	
 	

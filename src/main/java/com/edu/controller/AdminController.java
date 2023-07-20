@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.dao.Admin;
+import com.edu.dao.Customer;
 import com.edu.error.GlobalException;
 import com.edu.service.AdminService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AdminController {
 	
@@ -49,5 +52,15 @@ public class AdminController {
 	@PutMapping("/updateAdminById/{adminid}")
 	Admin updateAdminById(@PathVariable("adminid") Integer adminid, @Valid @RequestBody Admin admin) throws GlobalException {
 		return adminService.updateAdminById(adminid, admin);
+	}
+	
+	@GetMapping("/getAdminById/{custid}")
+	public Admin getAdminById(@PathVariable("custid") Integer adminid) {
+		return adminService.getAdminById(adminid);
+	}
+	
+	@GetMapping("/getAdminByusername/{username}/{password}")
+	public Admin getAdminByusername(@PathVariable("username") String username,@PathVariable("password") String password) {
+		return adminService.getAdminByusername(username,password);
 	}
 }

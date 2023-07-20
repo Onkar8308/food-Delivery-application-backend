@@ -47,6 +47,14 @@ public class Customer {
 	
 	
 	
+	public Integer getCustomerid() {
+		return customerid;
+	}
+
+	public void setCustomerid(Integer customerid) {
+		this.customerid = customerid;
+	}
+
 	public Set<CustomerAddress> getCob() {
 		return cob;
 	}
