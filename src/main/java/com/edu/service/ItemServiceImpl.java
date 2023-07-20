@@ -39,16 +39,7 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepository.findAll();
 	}
 
-	@Override
-	public void deleteItemById(Integer itemid) throws GlobalException {
-		// TODO Auto-generated method stub
-		Optional<Item> cob = itemRepository.findById(itemid);
-		if (!cob.isPresent()) {
-			throw new GlobalException("Item id does not exist");
-		}
-		itemRepository.deleteById(itemid);
 
-	}
 
 	@Override
 	public Item updateItemById(Integer itemid, Item item)
@@ -90,6 +81,33 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepository.getItemByRestId(addressid);
 	}
 
+//	@Override
+//	public Item saveItemByRestId(Item item, Integer restid) throws GlobalException {
+//		// TODO Auto-generated method stub
+//		Optional<Restaurant> res = restaurantRepository.findById(restid);
+//		
+//		if(!res.isPresent()) {
+//			throw new GlobalException(restid+ " is not present");
+//		}
+//		else {
+////			Item i 
+//			Restaurant restaurant = restaurantRepository.findById(restid).get();
+//			List<Item> list = restaurant.getItem();
+//			if(list.isEmpty()){
+//				List<Item> newList = new ArrayList<>();
+//				newList.add(item);
+//				restaurant.setItem(newList);
+//				restaurantRepository.save(restaurant);
+//				return item;
+//				}
+//			else {
+//				list.add(item);
+//				restaurantRepository.save(restaurant);
+//				return item;
+//			}
+//		}
+//	}
+	
 	@Override
 	public Item saveItemByRestId(Item item, Integer restid) throws GlobalException {
 		// TODO Auto-generated method stub
@@ -116,6 +134,25 @@ public class ItemServiceImpl implements ItemService {
 			}
 		}
 	}
+
+	@Override
+	public List<Item> deleteItemById(Integer itemid,Integer restid) {
+		// TODO Auto-generated method stub
+		System.out.println(itemid);
+		itemRepository.deleteItemById(itemid,restid);
+		
+		return itemRepository.findAll();
+	}
+
+	@Override
+	public Item getItemById(Integer itemid) {
+		// TODO Auto-generated method stub
+		return itemRepository.findById(itemid).get();
+	}
+
+	
+
+	
 
 	
 

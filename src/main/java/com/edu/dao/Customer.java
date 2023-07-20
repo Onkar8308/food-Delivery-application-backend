@@ -76,6 +76,16 @@ public class Customer {
 		this.password = password;
 	}
 
+	
+	
+	public Integer getCustomerid() {
+		return customerid;
+	}
+
+	public void setCustomerid(Integer customerid) {
+		this.customerid = customerid;
+	}
+
 	public String getCustomername() {
 		return customername;
 	}

@@ -26,5 +26,6 @@ public interface RestaurantService{
 //	public Restaurant updateRestaurantManagerName(@Valid Integer id, @Valid String managerName) throws GlobalException;
 
 	
+//	public List<Restaurant> saveItemByRestIdi(@Valid Item item, Integer restid) throws GlobalException;
 
 }

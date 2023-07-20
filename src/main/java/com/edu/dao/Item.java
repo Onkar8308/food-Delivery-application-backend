@@ -39,7 +39,7 @@ public class Item {
 	
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="restid" , referencedColumnName="restid")
 	Restaurant rest;
 	
