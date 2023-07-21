@@ -47,9 +47,9 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping("/deleteCustomerById/{custid}")
-	String deleteCustomerById(@PathVariable("custid") Integer customerid) throws GlobalException {
-		customerService.deleteCustomerById(customerid);
-		return "Customer deleted";
+	List<Customer> deleteCustomerById(@PathVariable("custid") Integer customerid) throws GlobalException {
+		return customerService.deleteCustomerById(customerid);
+		
 	}
 	
 	@PutMapping("/updateCustomerById/{custid}")

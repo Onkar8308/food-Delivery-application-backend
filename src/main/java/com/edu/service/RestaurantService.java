@@ -22,6 +22,7 @@ public interface RestaurantService{
 	public Restaurant saveItemByRestIdi(@Valid Item item, Integer restid) throws GlobalException;
 
 	public Restaurant getRestaurantById(Integer restid);
+	public Restaurant getRestaurantByEmail(String email, String password);
 
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException;
 //

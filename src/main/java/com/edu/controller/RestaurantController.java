@@ -79,18 +79,15 @@ public class RestaurantController {
 //		return new ResponseEntity<Restaurant>(restaurant,HttpStatus.ACCEPTED);
 //	}
 	
-<<<<<<< HEAD
 	@GetMapping("/getRestaurantById/{restid}")
 	public Restaurant getRestaurantById(@PathVariable("restid") Integer restid) {
 		return restaurantService.getRestaurantById(restid);
 	}
-=======
 //	@PostMapping("/saveItemByRestIdi/{restid}")
 //	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
 //		return restaurantService.saveItemByRestIdi(item,restid);
 //		 
 //	}
->>>>>>> 9da3e4faccf98973f1b75fce7b757a2922097871
 	
 	@PostMapping("/saveItemByRestIdi/{restid}")
 	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item,	 @PathVariable("restid") Integer restid) throws GlobalException {
@@ -102,4 +99,9 @@ public class RestaurantController {
 //	public List<Restaurant> saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
 //		return restaurantService.saveItemByRestIdi(item,restid);
 //	}
+	
+	@GetMapping("/getRestaurantByEmail/{email}/{password}")
+	public Restaurant getRestaurantByEmail(@PathVariable("email") String email,@PathVariable("password") String password) throws GlobalException {
+		return restaurantService.getRestaurantByEmail(email,password);
+	}
 }
