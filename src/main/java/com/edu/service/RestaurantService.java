@@ -15,11 +15,13 @@ public interface RestaurantService{
 
 	public List<Restaurant> getAllRestaurant();
 
-	public void deleteRestaurantById(Integer restid) throws GlobalException;
+	public List<Restaurant> deleteRestaurantById(Integer restid) throws GlobalException;
 
 	public Restaurant updateRestaurantById(Integer restid, Restaurant restaurant) throws GlobalException;
 
 	public Restaurant saveItemByRestIdi(@Valid Item item, Integer restid) throws GlobalException;
+
+	public Restaurant getRestaurantById(Integer restid);
 
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException;
 //

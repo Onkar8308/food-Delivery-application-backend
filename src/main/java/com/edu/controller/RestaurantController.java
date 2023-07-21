@@ -26,7 +26,6 @@ import com.edu.error.GlobalException;
 import com.edu.service.RestaurantService;
 
 @CrossOrigin(origins = "http://localhost:4200")
-
 @RestController
 public class RestaurantController {
 
@@ -51,11 +50,11 @@ public class RestaurantController {
 		return restaurantService.getAllRestaurant();
 	}
 	
-	//http://localhost:8990/deleteRestaurantAddressById/{addid}
+	//http://localhost:8990/deleteRestaurantById/{addid}
 	@DeleteMapping("/deleteRestaurantById/{restid}")
-	String deleteRestaurantById(@PathVariable("restid") Integer restid) throws GlobalException {
-		restaurantService.deleteRestaurantById(restid);
-		return "Record Deleted";
+	List<Restaurant> deleteRestaurantById(@PathVariable("restid") Integer restid) throws GlobalException {
+		return restaurantService.deleteRestaurantById(restid);
+		//return "Record Deleted";
 	}
 	
 	//http://localhost:8990/updateRestaurantAddressById/{addid}
@@ -75,6 +74,11 @@ public class RestaurantController {
 //		Restaurant restaurant = restaurantService.updateRestaurantManagerName(id, managerName);
 //		return new ResponseEntity<Restaurant>(restaurant,HttpStatus.ACCEPTED);
 //	}
+	
+	@GetMapping("/getRestaurantById/{restid}")
+	public Restaurant getRestaurantById(@PathVariable("restid") Integer restid) {
+		return restaurantService.getRestaurantById(restid);
+	}
 	
 	@PostMapping("/saveItemByRestIdi/{restid}")
 	public Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {

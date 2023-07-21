@@ -37,14 +37,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public void deleteRestaurantById(Integer restid) throws GlobalException {
+	public List<Restaurant> deleteRestaurantById(Integer restid) throws GlobalException {
 		// TODO Auto-generated method stub
 		Optional<Restaurant> rob = restaurantRepository.findById(restid);
 		if(!rob.isPresent()) {
 			throw new GlobalException("Restaurant Address id=" + restid + " does not exist");
 		}
 	
-		restaurantRepository.deleteById(restid);
+		 restaurantRepository.deleteById(restid);
+		return restaurantRepository.findAll();
 	}
 
 	@Override
@@ -114,6 +115,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 				return restaurant;
 			}
 		}
+	}
+
+	@Override
+	public Restaurant getRestaurantById(Integer restid) {
+		// TODO Auto-generated method stub
+		return restaurantRepository.findById(restid).get();
 	}
 
 //	@Override
