@@ -139,9 +139,12 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> deleteItemById(Integer itemid,Integer restid) {
 		// TODO Auto-generated method stub
 		System.out.println(itemid);
-		itemRepository.deleteItemById(itemid,restid);
 		
-		return itemRepository.findAll();
+		itemRepository.deleteById(itemid);
+		
+//		List<Item> it = itemRepository.getItemByRestId(restid);
+				
+		return itemRepository.getItemByRestId(restid);
 	}
 
 	@Override

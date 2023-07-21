@@ -83,7 +83,6 @@ public class RestaurantController {
 	public Restaurant getRestaurantById(@PathVariable("restid") Integer restid) {
 		return restaurantService.getRestaurantById(restid);
 	}
-
 //	@PostMapping("/saveItemByRestIdi/{restid}")
 //	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
 //		return restaurantService.saveItemByRestIdi(item,restid);

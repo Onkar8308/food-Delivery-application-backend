@@ -125,6 +125,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		return restaurantRepository.findById(restid).get();
 	}
+	
+	@Override
+	public Restaurant getRestaurantByEmail(String email, String password) {
+		// TODO Auto-generated method stub
+		 return restaurantRepository.getRestaurantByEmail(email,password);
+	}
 
 	@Override
 	public Restaurant getRestaurantByEmail(String email, String password) {
