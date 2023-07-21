@@ -12,7 +12,7 @@ public interface CustomerService {
 
 	List<Customer> getAllCustomer();
 
-	void deleteCustomerById(Integer customerid);
+	List<Customer> deleteCustomerById(Integer customerid);
 
 	Customer updateCustomerById(Integer customerid, @Valid Customer customer);
 

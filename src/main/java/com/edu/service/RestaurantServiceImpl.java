@@ -67,6 +67,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 			restaurant.setRestname(restaurantaddress.getRestname());
 			restaurant.setManagerName(restaurantaddress.getManagerName());
 			restaurant.setContactNumber(restaurantaddress.getContactNumber());
+			restaurant.setEmail(restaurantaddress.getEmail());
+			restaurant.setPassword(restaurantaddress.getPassword());
+			
 		}
 		
 		return restaurantRepository.save(restaurant);
@@ -121,6 +124,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public Restaurant getRestaurantById(Integer restid) {
 		// TODO Auto-generated method stub
 		return restaurantRepository.findById(restid).get();
+	}
+
+	@Override
+	public Restaurant getRestaurantByEmail(String email, String password) {
+		// TODO Auto-generated method stub
+		return restaurantRepository.getRestaurantByEmail(email,password);
 	}
 
 //	@Override

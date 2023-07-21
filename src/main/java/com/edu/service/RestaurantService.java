@@ -23,6 +23,8 @@ public interface RestaurantService{
 
 	public Restaurant getRestaurantById(Integer restid);
 
+	public Restaurant getRestaurantByEmail(String email, String password);
+
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException;
 //
 //	public Restaurant updateRestaurantManagerName(@Valid Integer id, @Valid String managerName) throws GlobalException;

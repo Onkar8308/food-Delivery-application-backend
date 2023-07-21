@@ -32,9 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
 	
 
 	@Override
-	public void deleteCustomerById(Integer customerid) {
+	public List<Customer> deleteCustomerById(Integer customerid) {
 		// TODO Auto-generated method stub
 		customerRepository.deleteById(customerid);
+		return customerRepository.findAll();
 	}
 
 
