@@ -33,7 +33,6 @@ public class Customer {
 
 	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
 	//@NotNull(message = "Enter Customer Email Id") 
-	//@Pattern(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
 	@Column(unique = true)
 	private String customeremail;
 	

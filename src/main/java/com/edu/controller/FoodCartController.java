@@ -54,7 +54,7 @@ public class FoodCartController {
 		return cartSerice.updateCartByItem(id,item);
 	}
 	
-	@RequestMapping(value = "/updateCartByCustomer/{id}",method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateCartByCustomer/{id}",method = RequestMethod.POST)
 	public FoodCart updateCartbyCustomer(@PathVariable("id") Integer id,@RequestBody Customer cust) throws GlobalException {
 		return cartSerice.updateCartbyCustomer(id,cust);
 	}

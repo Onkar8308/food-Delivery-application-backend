@@ -59,12 +59,12 @@ public class CustomerController {
 		return customerService.updateCustomerById(customerid,customer);
 	}
 	
-	//login
-	//http://localhost:8990/findByCustomernameAndCustomerpassword/{cname}/{cpass}
-	@GetMapping("/findByCustomernameAndCustomerpassword/{cname}/{cpass}")
-	List<Customer> findByCustomernameAndCustomerpassword(@PathVariable("cname") String cname, @PathVariable("cpass") String cpass){
-		return customerService.findByCustomernameAndCustomerpassword(cname,cpass);
-	}
+//	//login
+//	//http://localhost:8990/findByCustomernameAndCustomerpassword/{cname}/{cpass}
+//	@GetMapping("/findByCustomernameAndCustomerpassword/{cname}/{cpass}")
+//	List<Customer> findByCustomernameAndCustomerpassword(@PathVariable("cname") String cname, @PathVariable("cpass") String cpass){
+//		return customerService.findByCustomernameAndCustomerpassword(cname,cpass);
+//	}
 	
 	//sign in get by email
 	@GetMapping("/getCustomerByEmail/{email}/{password}")
