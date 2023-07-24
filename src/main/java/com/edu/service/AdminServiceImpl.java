@@ -57,6 +57,12 @@ public class AdminServiceImpl implements AdminService{
 		return adminRepository.save(a);
 	}
 
+	@Override
+	public Admin getAdminByusername(String username, String password) {
+		// TODO Auto-generated method stub
+		return adminRepository.getAdminByusername(username,password);
+	}
+
 	
 	
 	

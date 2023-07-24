@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.dao.Item;
@@ -45,7 +46,7 @@ public class RestaurantController {
 		return new ResponseEntity<Restaurant>(cust, HttpStatus.CREATED);
 	}
 	
-	//http://localhost:8990/getAllRestaurantAddress
+	//http://localhost:9999/getAllRestaurantAddress
 	@GetMapping("/getAllRestaurant")
 	List<Restaurant> getAllRestaurant(){
 		return restaurantService.getAllRestaurant();
@@ -79,5 +80,15 @@ public class RestaurantController {
 	@PostMapping("/saveItemByRestIdi/{restid}")
 	public Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
 		return restaurantService.saveItemByRestIdi(item,restid);
+	}
+	
+	//search
+	@GetMapping("/getAllRestaurantsearch")
+	public List<Restaurant> getAllRestaurantsearch(@RequestParam(defaultValue = "") String searchkey){
+		List<Restaurant> result = restaurantService.getAllRestaurantsearch(searchkey);
+		//System.out.println("Result size is: " + result.size());
+		return result;
+		
+		//return restaurantService.getAllRestaurantsearch(searchkey);
 	}
 }

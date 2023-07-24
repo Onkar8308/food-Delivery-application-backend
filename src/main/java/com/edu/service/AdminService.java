@@ -20,6 +20,8 @@ public interface AdminService {
 
 	public Admin updateAdminById(Integer adminid, Admin admin) throws GlobalException;
 
+	public Admin getAdminByusername(String username, String password);
+
 	
 
 }

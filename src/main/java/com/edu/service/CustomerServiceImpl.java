@@ -52,12 +52,13 @@ public class CustomerServiceImpl implements CustomerService {
 		return cus;
 	}
 
-	@Override
-	public List<Customer> findByCustomernameAndCustomerpassword(String cname, String cpass) {
-		// TODO Auto-generated method stub
-		return customerRepository.findByCustomernameAndCustomerpassword(cname, cpass);
-	}
+//	@Override
+//	public List<Customer> findByCustomernameAndCustomerpassword(String cname, String cpass) {
+//		// TODO Auto-generated method stub
+//		return customerRepository.findByCustomernameAndCustomerpassword(cname, cpass);
+//	}
 
+	//login
 	@Override
 	public Customer getCustomerByEmail(String email,String password) {
 		// TODO Auto-generated method stub
@@ -69,6 +70,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return customerRepository.findById(customerid).get();
 	}
+
 
 
 

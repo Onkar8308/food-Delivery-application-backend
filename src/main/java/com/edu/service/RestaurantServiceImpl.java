@@ -1,13 +1,14 @@
 package com.edu.service;
 
+import java.awt.print.Pageable;
 import java.util.*;
-
-import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.edu.dao.Item;
 import com.edu.dao.Restaurant;
@@ -115,6 +116,21 @@ public class RestaurantServiceImpl implements RestaurantService {
 			}
 		}
 	}
+	
+	
+	public List<Restaurant> getAllRestaurantsearch(String searchkey){
+		
+		//Pageable pageable = (Pageable) PageRequest.of(PageNumber, 12);
+		
+		if(searchkey.equals("")) {
+			return restaurantRepository.findAll();
+		}
+		
+		return restaurantRepository.findByRestnameContainingIgnoreCase(searchkey);
+		
+	}
+
+	
 
 //	@Override
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException {
