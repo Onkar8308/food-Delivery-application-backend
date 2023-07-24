@@ -74,7 +74,7 @@ public class ItemController {
 	}
 	
 	
-	@GetMapping("/getItemById/{itemid}")
+	@GetMapping("/getItemById/{itemid}")	
 	public Item getItemById(@PathVariable Integer itemid) {
 		return itemService.getItemById(itemid);
 	}

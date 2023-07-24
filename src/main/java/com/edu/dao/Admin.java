@@ -18,7 +18,7 @@ public class Admin {
 	@Column(length = 40, nullable = false)
 	@NotBlank(message = "Username cannot be blank")
 	@NotEmpty(message = "Username cannot be empty")
-	private String username;
+	private String username ;
 	
 	@Column(length = 40, nullable = false)
 	@NotBlank(message = "Password cannot be blank")

@@ -133,7 +133,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public Restaurant getRestaurantByEmail(String email, String password) {
+	public Restaurant getRestaurantByEmail1(String email, String password) {
 		// TODO Auto-generated method stub
 		return restaurantRepository.getRestaurantByEmail(email,password);
 	}

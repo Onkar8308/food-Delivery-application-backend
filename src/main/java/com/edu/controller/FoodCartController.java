@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.edu.dao.Customer;
 import com.edu.dao.FoodCart;
 import com.edu.dao.Item;
 import com.edu.error.GlobalException;
@@ -46,4 +47,26 @@ public class FoodCartController {
 		return cartSerice.getItemByCartId(id);
 		
 	}
+	
+	
+	@RequestMapping(value = "/updateCartByItem/{id}",method = RequestMethod.PUT)
+	public FoodCart updateCartByItem(@PathVariable("id") Integer id,@RequestBody Item item) throws GlobalException {
+		return cartSerice.updateCartByItem(id,item);
+	}
+	
+	@RequestMapping(value = "/updateCartByCustomer/{id}",method = RequestMethod.PUT)
+	public FoodCart updateCartbyCustomer(@PathVariable("id") Integer id,@RequestBody Customer cust) throws GlobalException {
+		return cartSerice.updateCartbyCustomer(id,cust);
+	}
+	
+	@RequestMapping(value = "/getCartByEmail/{email}",method = RequestMethod.GET)
+	public FoodCart getCartBYEmail(@PathVariable String email)  throws GlobalException{
+		return cartSerice.getCartBYEmail(email);
+	}
+	
+	@RequestMapping(value = "/deleteItemInCartById/{cartId}",method = RequestMethod.DELETE)
+	public FoodCart deleteItemInCartByID(@PathVariable("cartId") Integer cartID) throws GlobalException {
+		return cartSerice.deleteItemInCartByID(cartID);
+	}
+
 }

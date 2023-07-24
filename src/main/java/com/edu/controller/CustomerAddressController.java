@@ -20,7 +20,7 @@ import com.edu.dao.CustomerAddress;
 import com.edu.error.GlobalException;
 import com.edu.service.CustomerAddressService;
 
-//@CrossOrigin(origins = "http://localhost:4200")//connect with ang
+@CrossOrigin(origins = "http://localhost:4200")//connect with ang
 @RestController
 public class CustomerAddressController {
 	
@@ -55,15 +55,25 @@ public class CustomerAddressController {
 		return "Record Deleted";
 	}
 	
+	@GetMapping("/getCustomerAddById/{id}")
+	public CustomerAddress getCustomerAddById(@PathVariable("id") Integer id) {
+		return customerAddressService.getCustomerAddById(id);
+	}
+	
 	//http://localhost:8990/updateCustomerAddressById/{addid}
 	@PutMapping("/updateCustomerAddressById/{addid}")
 	CustomerAddress updateCustomerAddressById(@PathVariable("addid") Integer addressid, @RequestBody CustomerAddress customeraddress) throws GlobalException {
 		return customerAddressService.updateCustomerAddressById(addressid,customeraddress);
 	}
 	
-	@PutMapping("/customerAssigncustomeraddress/customer/{custid}/customerAddress/{addid}")
+	@GetMapping("/customerAssigncustomeraddress/customer/{custid}/customerAddress/{addid}")
 	public CustomerAddress customerAssigncustomeraddress(@PathVariable Integer custid, @PathVariable Integer addid) {
 		return customerAddressService.customerAssigncustomeraddress(custid, addid);
 	}
+//	
+//	@GetMapping("/getCustomerAddressByCustomerEmail/{email}")
+//	List<CustomerAddress> getCustomerAddressByCustomerEmail(@path){
+//		return customerAddressService.getCustomerAddressByCustomerEmail();
+//	}
 	
 }

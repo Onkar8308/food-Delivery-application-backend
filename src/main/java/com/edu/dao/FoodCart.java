@@ -22,10 +22,12 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class FoodCart {
@@ -39,8 +41,8 @@ public class FoodCart {
 	private Customer cust;
 	
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Item> itemList = new ArrayList<>() ;
+	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
+	private List<Item> itemList;
 	
 
 }

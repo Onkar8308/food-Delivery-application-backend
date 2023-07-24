@@ -76,4 +76,11 @@ public class CustomerAddressServiceImpl implements CustomerAddressService{
 		 return customerAddressRepository.save(cuadd);
 	}
 
+
+	@Override
+	public CustomerAddress getCustomerAddById(Integer id) {
+		// TODO Auto-generated method stub
+		return customerAddressRepository.findById(id).get();
+	}
+
 }

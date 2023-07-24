@@ -24,7 +24,7 @@ public interface RestaurantService{
 	public Restaurant getRestaurantById(Integer restid);
 	public Restaurant getRestaurantByEmail(String email, String password);
 
-	public Restaurant getRestaurantByEmail(String email, String password);
+	public Restaurant getRestaurantByEmail1(String email, String password);
 
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException;
 //

@@ -43,6 +43,13 @@ public class Item {
 	@JoinColumn(name="restid" , referencedColumnName="restid")
 	Restaurant rest;
 	
+	
+
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="cartId" , referencedColumnName="foodCart_Id")
+	FoodCart cart;
+	
 
 
 	public Item() {
@@ -134,5 +141,12 @@ public class Item {
 		// TODO Auto-generated method stub
 		this.rest = dob;
 		
+	}
+
+
+
+	public void assignCart(FoodCart cart) {
+		// TODO Auto-generated method stub
+		this.cart = cart;
 	}
 }

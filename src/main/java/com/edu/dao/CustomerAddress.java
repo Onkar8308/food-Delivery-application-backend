@@ -141,6 +141,11 @@ public class CustomerAddress {
 		
 	}
 
+	public void addressAssignedCustomer(Customer dob) {
+		// TODO Auto-generated method stub
+		this.cust = dob;
+	}
+
 	
 	
 	

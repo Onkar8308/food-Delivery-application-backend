@@ -21,4 +21,6 @@ public interface CustomerAddressService {
 
 	CustomerAddress customerAssigncustomeraddress(Integer custid, Integer addid);
 
+	public CustomerAddress getCustomerAddById(Integer id);
+
 }

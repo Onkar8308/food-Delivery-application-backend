@@ -1,6 +1,7 @@
 package com.edu.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.dao.Customer;
+import com.edu.dao.CustomerAddress;
 import com.edu.error.GlobalException;
 import com.edu.service.CustomerService;
 
@@ -74,7 +76,24 @@ public class CustomerController {
 	public Customer getCustomerById(@PathVariable("custid") Integer customerid) {
 		return customerService.getCustomerById(customerid);
 	}
+	
+	@PutMapping("/updateCustomerAddByid/{custid}")
+	public Customer updateCustomerAddByid(@PathVariable("custid") Integer customerid,@RequestBody CustomerAddress cob) {
+		return customerService.updateCustomerAddByid(customerid,cob);
+	}
+	
+	@GetMapping("/getCustomerByEmail/{email}")
+	public Customer getCustomerByEmail1(@PathVariable("email") String email) {
+		return customerService.getCustomerByEmail(email);
+	}
+	
+	@GetMapping("/getCustomerAddByEmail/{email}")
+	public Set<CustomerAddress> getCustomerAddByEmail(@PathVariable("email") String email) {
+		return customerService.getCustomerAddByEmail(email);
+	}
+	
 
+	
 }
 
 	

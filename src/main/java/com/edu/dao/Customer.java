@@ -59,19 +59,38 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String customername,long customermobilenumber,String customeremail, String password) {
+	
+
+	
+
+
+	public Customer(Integer customerid, String customername, long customermobilenumber,
+			@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", message = "invalid Email") String customeremail,
+			@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password") String password,
+			Set<CustomerAddress> cob) {
 		super();
+		this.customerid = customerid;
 		this.customername = customername;
 		this.customermobilenumber = customermobilenumber;
 		this.customeremail = customeremail;
 		this.password = password;
+		this.cob = cob;
 	}
-
-	
-	
 
 	public String getCustomername() {
 		return customername;
+	}
+	
+	
+	
+	
+
+	public Integer getCustomerid() {
+		return customerid;
+	}
+
+	public void setCustomerid(Integer customerid) {
+		this.customerid = customerid;
 	}
 
 	public void setCustomername(String customername) {
@@ -108,6 +127,9 @@ public class Customer {
 				+ customermobilenumber + ", customeremail=" + customeremail + ", password=" + password + ", cob=" + cob
 				+ "]";
 	}
+
+	
+
 	
 	
 

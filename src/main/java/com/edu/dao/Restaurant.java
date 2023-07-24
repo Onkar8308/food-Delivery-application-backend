@@ -72,8 +72,7 @@ public class Restaurant {
 	@Column(unique = true)
 	private String email;
 		
-	//@Pattern(regexp = "^(?=.[A-Za-z])(?=.\\d)(?=.[@$!%#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password")
-	@Column(unique = true)
+//	@Column(unique = true)
 	private String password;
 	
 //	@JsonIgnore
