@@ -55,11 +55,11 @@ public class AdminController {
 	}
 	
 
-	@GetMapping("/getAdminByusername/{username}/{password}")
-    public Admin getAdminByusername(@PathVariable("username") String username,@PathVariable("password") String password) {
-        return adminService.getAdminByusername(username,password);
-
-    }
+//	@GetMapping("/getAdminByusername/{username}/{password}")
+//    public Admin getAdminByusername(@PathVariable("username") String username,@PathVariable("password") String password) {
+//        return adminService.getAdminByusername(username,password);
+//
+//    }
 
 	@GetMapping("/getAdminById/{custid}")
 	public Admin getAdminById(@PathVariable("custid") Integer adminid) {

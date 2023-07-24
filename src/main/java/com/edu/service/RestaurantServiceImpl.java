@@ -148,11 +148,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 		 return restaurantRepository.getRestaurantByEmail(email,password);
 	}
 
-	@Override
-	public Restaurant getRestaurantByEmail(String email, String password) {
-		// TODO Auto-generated method stub
-		return restaurantRepository.getRestaurantByEmail(email,password);
-	}
+//	@Override
+//	public Restaurant getRestaurantByEmail(String email, String password) {
+//		// TODO Auto-generated method stub
+//		return restaurantRepository.getRestaurantByEmail(email,password);
+//	}
 
 //	@Override
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException {
