@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.dao.Admin;
+import com.edu.dao.Customer;
 import com.edu.error.GlobalException;
 import com.edu.service.AdminService;
 
@@ -53,9 +54,21 @@ public class AdminController {
 		return adminService.updateAdminById(adminid, admin);
 	}
 	
+
 	@GetMapping("/getAdminByusername/{username}/{password}")
     public Admin getAdminByusername(@PathVariable("username") String username,@PathVariable("password") String password) {
         return adminService.getAdminByusername(username,password);
 
     }
+
+	@GetMapping("/getAdminById/{custid}")
+	public Admin getAdminById(@PathVariable("custid") Integer adminid) {
+		return adminService.getAdminById(adminid);
+	}
+	
+	@GetMapping("/getAdminByusername/{username}/{password}")
+	public Admin getAdminByusername(@PathVariable("username") String username,@PathVariable("password") String password) {
+		return adminService.getAdminByusername(username,password);
+	}
+
 }

@@ -24,15 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.edu.dao.Item;
 import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
+import com.edu.repository.RestaurantRepository;
 import com.edu.service.RestaurantService;
 
 @CrossOrigin(origins = "http://localhost:4200")
-
 @RestController
 public class RestaurantController {
 
 	@Autowired
 	private RestaurantService restaurantService;
+	
+	@Autowired
+	private RestaurantRepository restaurantRepository;
 	
 	// http://localhost:8990/saveRestaurantAddress
 //	@PostMapping("/saveRestaurantAddress")
@@ -52,11 +55,11 @@ public class RestaurantController {
 		return restaurantService.getAllRestaurant();
 	}
 	
-	//http://localhost:8990/deleteRestaurantAddressById/{addid}
+	//http://localhost:8990/deleteRestaurantById/{addid}
 	@DeleteMapping("/deleteRestaurantById/{restid}")
-	String deleteRestaurantById(@PathVariable("restid") Integer restid) throws GlobalException {
-		restaurantService.deleteRestaurantById(restid);
-		return "Record Deleted";
+	List<Restaurant> deleteRestaurantById(@PathVariable("restid") Integer restid) throws GlobalException {
+		return restaurantService.deleteRestaurantById(restid);
+		//return "Record Deleted";
 	}
 	
 	//http://localhost:8990/updateRestaurantAddressById/{addid}
@@ -77,9 +80,30 @@ public class RestaurantController {
 //		return new ResponseEntity<Restaurant>(restaurant,HttpStatus.ACCEPTED);
 //	}
 	
+	@GetMapping("/getRestaurantById/{restid}")
+	public Restaurant getRestaurantById(@PathVariable("restid") Integer restid) {
+		return restaurantService.getRestaurantById(restid);
+	}
+//	@PostMapping("/saveItemByRestIdi/{restid}")
+//	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
+//		return restaurantService.saveItemByRestIdi(item,restid);
+//		 
+//	}
+	
 	@PostMapping("/saveItemByRestIdi/{restid}")
-	public Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
-		return restaurantService.saveItemByRestIdi(item,restid);
+	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item,	 @PathVariable("restid") Integer restid) throws GlobalException {
+		 restaurantService.saveItemByRestIdi(item,restid);
+		 return restaurantRepository.findById(restid).get();
+	}
+	
+//	@PostMapping("/saveItemByRestIdi/{restid}")
+//	public List<Restaurant> saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
+//		return restaurantService.saveItemByRestIdi(item,restid);
+//	}
+	
+	@GetMapping("/getRestaurantByEmail/{email}/{password}")
+	public Restaurant getRestaurantByEmail(@PathVariable("email") String email,@PathVariable("password") String password) throws GlobalException {
+		return restaurantService.getRestaurantByEmail(email,password);
 	}
 	
 	//search

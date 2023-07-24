@@ -17,7 +17,6 @@ public interface ItemService {
 
 	public List<Item> getAllItems();
 
-	public void deleteItemById(Integer itemid) throws GlobalException;
 
 	public Item updateItemById(Integer itemid, Item item) throws GlobalException;
 
@@ -26,6 +25,14 @@ public interface ItemService {
 	public List<Item> getItemByRestId(Integer restid);
 
 	public Item saveItemByRestId(@Valid Item item, Integer restid) throws GlobalException;
+	
+//	public List<Item> saveItemByRestId(@Valid Item item, Integer restid) throws GlobalException;
+
+
+	public List<Item> deleteItemById(Integer itemid,Integer restid);
+
+	public Item getItemById(Integer itemid);
+
 
 
 }

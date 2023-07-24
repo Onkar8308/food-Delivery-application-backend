@@ -15,19 +15,27 @@ public interface RestaurantService{
 
 	public List<Restaurant> getAllRestaurant();
 
-	public void deleteRestaurantById(Integer restid) throws GlobalException;
+	public List<Restaurant> deleteRestaurantById(Integer restid) throws GlobalException;
 
 	public Restaurant updateRestaurantById(Integer restid, Restaurant restaurant) throws GlobalException;
 
 	public Restaurant saveItemByRestIdi(@Valid Item item, Integer restid) throws GlobalException;
 
+<<<<<<< HEAD
 	public List<Restaurant> getAllRestaurantsearch(String searchkey);
 	
+=======
+	public Restaurant getRestaurantById(Integer restid);
+	public Restaurant getRestaurantByEmail(String email, String password);
+
+	public Restaurant getRestaurantByEmail(String email, String password);
+>>>>>>> 245a81ff3ba0bc8b229100ee82172b53298318d6
 
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException;
 //
 //	public Restaurant updateRestaurantManagerName(@Valid Integer id, @Valid String managerName) throws GlobalException;
 
 	
+//	public List<Restaurant> saveItemByRestIdi(@Valid Item item, Integer restid) throws GlobalException;
 
 }

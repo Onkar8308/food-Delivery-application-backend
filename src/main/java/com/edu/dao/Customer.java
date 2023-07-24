@@ -45,8 +45,7 @@ public class Customer {
 	Set<CustomerAddress> cob = new HashSet<CustomerAddress>();
 	
 	
-	
-	
+
 	public Set<CustomerAddress> getCob() {
 		return cob;
 	}
@@ -67,6 +66,9 @@ public class Customer {
 		this.customeremail = customeremail;
 		this.password = password;
 	}
+
+	
+	
 
 	public String getCustomername() {
 		return customername;

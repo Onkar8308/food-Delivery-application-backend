@@ -1,22 +1,22 @@
 package com.edu.dao;
 
-
-
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 
 @Entity
@@ -36,41 +36,9 @@ public class Restaurant {
 	
 	@NotBlank(message = "contact number should not be blank")
 	@NotEmpty(message = "contact number should not be empty")
-	@Column(nullable = false)
+	@Column(nullable = false, unique= true)
 	private String contactNumber;
 	
-	
-//	@JsonIgnore
-	@OneToMany(mappedBy="rest")
-	List<Item> item = new ArrayList<Item>();
-	
-	
-	
-
-	public List<Item> getItem() {
-		return item;
-	}
-
-	public void setItem(List<Item> item) {
-		this.item = item;
-	}
-
-	public String getRestname() {
-		return restname;
-	}
-
-	public void setRestname(String restname) {
-		this.restname = restname;
-	}
-
-	public String getPic() {
-		return pic;
-	}
-
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
-
 	@Column(nullable = true)
 	private String pic;
 	
@@ -100,34 +68,78 @@ public class Restaurant {
 	@Column(length = 6, nullable = false)
 	private String pincode;
 
+	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
+	@Column(unique = true)
+	private String email;
+		
+	//@Pattern(regexp = "^(?=.[A-Za-z])(?=.\\d)(?=.[@$!%#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password")
+	@Column(unique = true)
+	private String password;
 	
-	public Restaurant() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+//	@JsonIgnore
+	@OneToMany(mappedBy="rest")
+	List<Item> item = new ArrayList<Item>();
 	
-
-	public Restaurant( String restname, String managerName, String contactNumber, String pic, String area,String city,
-			String state, String country, String pincode) {
+	public Restaurant( String restname, String managerName, String contactNumber, String pic, String area, String city,
+			 String state, String country, String pincode, String email, String password) {
 		super();
 		this.restname = restname;
 		this.managerName = managerName;
 		this.contactNumber = contactNumber;
+		this.item = item;
 		this.pic = pic;
 		this.area = area;
 		this.city = city;
 		this.state = state;
 		this.country = country;
 		this.pincode = pincode;
+		this.email = email;
+		this.password = password;
+	  }
+	
+	public Restaurant() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getrestid() {
+	public Integer getRestid() {
 		return restid;
 	}
 
-	public void setrestid(Integer restid) {
+	public void setRestid(Integer restid) {
 		this.restid = restid;
+	}
+
+	public String getRestname() {
+		return restname;
+	}
+
+	public void setRestname(String restname) {
+		this.restname = restname;
+	}
+
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 
 	public String getArea() {
@@ -162,22 +174,6 @@ public class Restaurant {
 		this.country = country;
 	}
 
-	public String getManagerName() {
-		return managerName;
-	}
-
-	public void setManagerName(String managerName) {
-		this.managerName = managerName;
-	}
-
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
 	public String getPincode() {
 		return pincode;
 	}
@@ -186,11 +182,37 @@ public class Restaurant {
 		this.pincode = pincode;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+	
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Item> getItem() {
+		return item;
+	}
+
+	public void setItem(List<Item> item) {
+		this.item = item;
+	}
+
 	@Override
 	public String toString() {
 		return "Restaurant [restid=" + restid + ", restname=" + restname + ", managerName=" + managerName
-				+ ", contactNumber=" + contactNumber + ", item=" + item + ", pic=" + pic + ", area=" + area + ", city="
-				+ city + ", state=" + state + ", country=" + country + ", pincode=" + pincode + "]";
-	}
+				+ ", contactNumber=" + contactNumber + ", pic=" + pic + ", area=" + area + ", city=" + city + ", state="
+				+ state + ", country=" + country + ", pincode=" + pincode + ", email=" + email + ", password="
+				+ password + ", item=" + item + "]";
+	}	
 	
 }

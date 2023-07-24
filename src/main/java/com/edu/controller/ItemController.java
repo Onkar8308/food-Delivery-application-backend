@@ -40,12 +40,14 @@ public class ItemController {
 		return itemService.getAllItems();
 	}
 
-	// http://localhost:8990/deleteItemById/{itemid}
-	@DeleteMapping("/deleteItemById/{itemid}")
-	String deleteItemById(@PathVariable("itemid") Integer itemid) throws GlobalException {
-		itemService.deleteItemById(itemid);
-		return "Record Deleted";
+	
+	@DeleteMapping("/deleteItemById/{itemid}/{restid}")
+	public List<Item> deleteItemById(@PathVariable Integer itemid, @PathVariable Integer restid) {
+		return itemService.deleteItemById(itemid,restid);
+//		return "delete";
 	}
+	
+//	
 
 	// http://localhost:8990/updateItemById/{itemid}
 	@PutMapping("/updateItemById/{itemid}")
@@ -70,6 +72,19 @@ public class ItemController {
 	public Item saveItemByRestId(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
 		return itemService.saveItemByRestId(item,restid);
 	}
+	
+	
+	@GetMapping("/getItemById/{itemid}")
+	public Item getItemById(@PathVariable Integer itemid) {
+		return itemService.getItemById(itemid);
+	}
+	
+	
+//	@PostMapping("/saveItemByRestId/{restid}")
+//	public List<Item> saveItemByRestId(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
+//		return itemService.saveItemByRestId(item,restid);
+//	}
+	
 	
 
 }

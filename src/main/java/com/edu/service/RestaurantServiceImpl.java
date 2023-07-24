@@ -38,14 +38,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public void deleteRestaurantById(Integer restid) throws GlobalException {
+	public List<Restaurant> deleteRestaurantById(Integer restid) throws GlobalException {
 		// TODO Auto-generated method stub
 		Optional<Restaurant> rob = restaurantRepository.findById(restid);
 		if(!rob.isPresent()) {
 			throw new GlobalException("Restaurant Address id=" + restid + " does not exist");
 		}
 	
-		restaurantRepository.deleteById(restid);
+		 restaurantRepository.deleteById(restid);
+		return restaurantRepository.findAll();
 	}
 
 	@Override
@@ -67,6 +68,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 			restaurant.setRestname(restaurantaddress.getRestname());
 			restaurant.setManagerName(restaurantaddress.getManagerName());
 			restaurant.setContactNumber(restaurantaddress.getContactNumber());
+			restaurant.setEmail(restaurantaddress.getEmail());
+			restaurant.setPassword(restaurantaddress.getPassword());
+			
 		}
 		
 		return restaurantRepository.save(restaurant);
@@ -132,6 +136,24 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	
 
+	@Override
+	public Restaurant getRestaurantById(Integer restid) {
+		// TODO Auto-generated method stub
+		return restaurantRepository.findById(restid).get();
+	}
+	
+	@Override
+	public Restaurant getRestaurantByEmail(String email, String password) {
+		// TODO Auto-generated method stub
+		 return restaurantRepository.getRestaurantByEmail(email,password);
+	}
+
+	@Override
+	public Restaurant getRestaurantByEmail(String email, String password) {
+		// TODO Auto-generated method stub
+		return restaurantRepository.getRestaurantByEmail(email,password);
+	}
+
 //	@Override
 //	public Restaurant findRestaurantByName(String restname) throws GlobalException {
 //		// TODO Auto-generated method stub
@@ -149,5 +171,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 //		restaurant.setManagerName(managerName);
 //		return restaurantRepository.save(restaurant);
 //	}
+	
+	
+	
 
 }
