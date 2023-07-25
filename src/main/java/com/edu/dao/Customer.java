@@ -43,8 +43,10 @@ public class Customer {
 	@OneToMany(mappedBy="cust")
 	Set<CustomerAddress> cob = new HashSet<CustomerAddress>();
 	
+//	@JsonIgnore
+//	@OneToOne(mappedBy = "cust")
+//	private FoodCart cart;
 	
-
 	public Set<CustomerAddress> getCob() {
 		return cob;
 	}
@@ -63,10 +65,12 @@ public class Customer {
 	
 
 
+	
+
 	public Customer(Integer customerid, String customername, long customermobilenumber,
-			@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", message = "invalid Email") String customeremail,
-			@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password") String password,
-			Set<CustomerAddress> cob) {
+			String customeremail,
+			 String password,
+			Set<CustomerAddress> cob, FoodCart cart) {
 		super();
 		this.customerid = customerid;
 		this.customername = customername;
@@ -74,6 +78,7 @@ public class Customer {
 		this.customeremail = customeremail;
 		this.password = password;
 		this.cob = cob;
+		
 	}
 
 	public String getCustomername() {
@@ -84,6 +89,8 @@ public class Customer {
 	
 	
 
+	
+
 	public Integer getCustomerid() {
 		return customerid;
 	}
@@ -91,6 +98,8 @@ public class Customer {
 	public void setCustomerid(Integer customerid) {
 		this.customerid = customerid;
 	}
+
+	
 
 	public void setCustomername(String customername) {
 		this.customername = customername;
@@ -126,6 +135,11 @@ public class Customer {
 				+ customermobilenumber + ", customeremail=" + customeremail + ", password=" + password + ", cob=" + cob
 				+ "]";
 	}
+
+//	public void assignCartToCustomer(FoodCart cart2) {
+//		// TODO Auto-generated method stub
+//		this.cart = cart2;
+//	}
 
 	
 

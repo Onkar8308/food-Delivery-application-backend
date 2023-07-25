@@ -74,7 +74,9 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer getCustomerByEmail(String email,String password) {
 		// TODO Auto-generated method stub
-		return customerRepository.getCustomerByEmail(email,password);
+		Customer cust = customerRepository.getCustomerByEmail(email,password);
+		System.out.println(cust);
+		return cust;
 	}
 
 	@Override
@@ -132,7 +134,7 @@ public class CustomerServiceImpl implements CustomerService {
 		return cutomerAddList;
 	}
 
-
+	
 
 
 }

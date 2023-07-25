@@ -24,10 +24,18 @@ public interface RestaurantService{
 
 	public List<Restaurant> getAllRestaurantsearch(String searchkey);
 
+
 	public Restaurant getRestaurantById(Integer restid);
 	public Restaurant getRestaurantByEmail(String email, String password);
 
 //	public Restaurant getRestaurantByEmail1(String email);
+
+	
+
+//	public Restaurant getRestaurantById(Integer restid);
+//	
+//	public Restaurant getRestaurantByEmail(String email, String password);
+//
 //	public Restaurant getRestaurantByEmail(String email, String password);
 
 

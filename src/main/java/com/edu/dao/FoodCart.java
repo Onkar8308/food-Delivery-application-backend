@@ -36,14 +36,16 @@ public class FoodCart {
 	@Column(name = "foodCart_Id")
 	private Integer id;
 	
+	@Column(name = "paymentStatus")
+	private String paymentStatus;
+	
 	@OneToOne(targetEntity = Customer.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "custId",referencedColumnName = "customerid")
 	private Customer cust;
 	
 
-	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
-	private List<Item> itemList;
-	
+	@OneToMany(mappedBy = "cart")
+	private List<Item> itemList = new ArrayList<>();
 	
 	
 

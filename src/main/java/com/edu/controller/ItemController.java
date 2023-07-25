@@ -57,7 +57,7 @@ public class ItemController {
 	}
 
 	//http://localhost:8990/itemAssignedRestaurant/item/{itemid}/restaurant/{restid}
-	@PutMapping("/itemAssignedRestaurant/item/{itemid}/restaurant/{restid}")
+	@GetMapping("/itemAssignedRestaurant/item/{itemid}/restaurant/{restid}")
 	public Item itemAssignedRestaurantAddress(@PathVariable Integer itemid, @PathVariable Integer restid) {
 		return itemService.itemAssignedRestaurant(itemid, restid);
 	}
@@ -78,6 +78,13 @@ public class ItemController {
 	public Item getItemById(@PathVariable Integer itemid) {
 		return itemService.getItemById(itemid);
 	}
+	
+//	@GetMapping("/assignItemToCart/{itemId}/{cartID}")
+//	public Item assignItemToCart(@PathVariable("itemId") Integer itemID,@PathVariable("cartID") Integer cartID) {
+//		return itemService.assignItemToCart(itemID,cartID);
+//		
+//	}
+	
 	
 	
 //	@PostMapping("/saveItemByRestId/{restid}")

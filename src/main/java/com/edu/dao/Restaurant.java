@@ -18,6 +18,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Restaurant {
@@ -75,8 +77,8 @@ public class Restaurant {
 //		@Column(unique = true)
 	private String password;
 	
-//	@JsonIgnore
-	@OneToMany(mappedBy="rest")
+	@JsonIgnore
+	@OneToMany(mappedBy="rest",cascade = CascadeType.ALL)
 	List<Item> item = new ArrayList<Item>();
 	
 	public Restaurant( String restname, String managerName, String contactNumber, String pic, String area, String city,

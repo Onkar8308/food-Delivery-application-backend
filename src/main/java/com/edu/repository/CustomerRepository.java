@@ -21,4 +21,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	
 	@Query(value = "select * from customer where customeremail=?",nativeQuery = true)
 	public Customer getCustomerByEmail1(String email);
+	
+	
 }

@@ -11,9 +11,11 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.dao.FoodCart;
 import com.edu.dao.Item;
 import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
+import com.edu.repository.FoodCartRepository;
 import com.edu.repository.ItemRepository;
 import com.edu.repository.RestaurantRepository;
 
@@ -26,6 +28,9 @@ public class ItemServiceImpl implements ItemService {
 	
 	@Autowired
 	private RestaurantRepository restaurantRepository;
+	
+	@Autowired
+	private FoodCartRepository cartRepo;
 
 	@Override
 	public Item saveItem(Item item) {
@@ -152,6 +157,19 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemRepository.findById(itemid).get();
 	}
+
+//	@Override
+//	public Item assignItemToCart(Integer itemID, Integer cartID) {
+//		// TODO Auto-generated method stub
+//		Item item = itemRepository.findById(itemID).get();
+//		System.out.println(item);
+//		FoodCart cart = cartRepo.findById(cartID).get();
+//		System.out.println(cart);
+//		cart.assignItemToCart(item);
+//		System.out.println(cart);
+//		cartRepo.save(cart);
+//		return item;
+//	}
 
 	
 

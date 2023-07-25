@@ -33,6 +33,8 @@ public interface ItemService {
 
 	public Item getItemById(Integer itemid);
 
+//	public Item assignItemToCart(Integer itemID, Integer cartID);
+
 
 
 }

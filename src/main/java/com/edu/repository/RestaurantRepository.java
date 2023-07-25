@@ -1,6 +1,5 @@
 package com.edu.repository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,4 +32,11 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 	@Query(value = "select * from restaurant where email=? and password=?",nativeQuery = true)
 	public Restaurant getRestaurantByEmail(String email,String password);
 	
+
+
 }
+
+
+
+
+

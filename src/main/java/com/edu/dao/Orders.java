@@ -31,6 +31,13 @@ public class Orders {
 	@NotBlank(message = "Please enter order status")
 	@Column(nullable = false)
 	private String ordersstatus;
+	
+	@OneToMany(mappedBy = "order")
+	private FoodCart cart;
+	
+	@OneToOne
+	@JoinColumn(name = "itemID",referencedColumnName = "itemid")
+	private Item item;
 
 
 	public Orders() {

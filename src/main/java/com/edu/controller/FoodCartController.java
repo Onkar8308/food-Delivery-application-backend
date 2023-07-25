@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +28,7 @@ public class FoodCartController {
 	@Autowired
 	FoodCartService cartSerice;
 	
-	@RequestMapping(method = RequestMethod.POST,value = "/savecart")
+	@PostMapping( "/savecart")
 	public FoodCart saveCart(@RequestBody FoodCart foodCart) {
 		return cartSerice.savecart(foodCart); 
 		
@@ -37,7 +40,7 @@ public class FoodCartController {
 		
 	}
 	
-	@RequestMapping(value = "/getAllCart",method = RequestMethod.GET)
+	@RequestMapping(value ="/getAllCart",method = RequestMethod.GET)
 	public List<FoodCart> 	 getCart() {
 		return cartSerice.getAllCart();	
 	}
@@ -54,8 +57,14 @@ public class FoodCartController {
 		return cartSerice.updateCartByItem(id,item);
 	}
 	
-	@RequestMapping(value = "/updateCartByCustomer/{id}",method = RequestMethod.POST)
-	public FoodCart updateCartbyCustomer(@PathVariable("id") Integer id,@RequestBody Customer cust) throws GlobalException {
+//	@RequestMapping(value = "/updateItemToNull/{id}",method = RequestMethod.PUT)
+//	public FoodCart updateItemToNull(@PathVariable("id") Integer id) {
+//		return cartSerice.updateItemToNull(id);
+//		
+//	}
+	
+	@PutMapping("/updateCartByCustomer/{cartID}")
+	public FoodCart updateCartbyCustomer(@PathVariable("cartID") Integer id,@RequestBody Customer cust) throws GlobalException {
 		return cartSerice.updateCartbyCustomer(id,cust);
 	}
 	
@@ -64,9 +73,18 @@ public class FoodCartController {
 		return cartSerice.getCartBYEmail(email);
 	}
 	
-	@RequestMapping(value = "/deleteItemInCartById/{cartId}",method = RequestMethod.DELETE)
-	public FoodCart deleteItemInCartByID(@PathVariable("cartId") Integer cartID) throws GlobalException {
-		return cartSerice.deleteItemInCartByID(cartID);
+//	@RequestMapping(value = "/deleteItemInCartById/{cartId}",method = RequestMethod.DELETE)
+//	public FoodCart deleteItemInCartByID(@PathVariable("cartId") Integer cartID) throws GlobalException {
+//		return cartSerice.deleteItemInCartByID(cartID);
+//	}
+	
+//	@RequestMapping(value = "/deleteCartById/{cartId}",method = RequestMethod.DELETE)
+//	public String deleteCartByID(@PathVariable("cartId") Integer cartID) throws GlobalException {
+//		return cartSerice.deleteCartByID(cartID);
+//	}
+	
+	@GetMapping(value = "updatePaymentStatus/{id}")
+	public FoodCart updatePaymentStatus(@PathVariable("id") Integer id) {
+		return cartSerice.updatePaymentStatus(id);
 	}
-
 }
