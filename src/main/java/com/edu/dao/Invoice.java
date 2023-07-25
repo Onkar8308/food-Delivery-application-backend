@@ -38,10 +38,7 @@ public class Invoice {
 	@Column(nullable = false)
 	private int invoicetotalitem;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ordersid")
-	private Orders orders;
-
+	
 
 	public Invoice() {
 		super();
@@ -96,15 +93,7 @@ public class Invoice {
 	}
 
 
-	public Orders getOrders() {
-		return orders;
-	}
-
-
-	public void setOrders(Orders orders) {
-		this.orders = orders;
-	}
-
+	
 
 	@Override
 	public String toString() {
