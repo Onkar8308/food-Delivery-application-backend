@@ -83,4 +83,11 @@ public class CustomerAddressServiceImpl implements CustomerAddressService{
 		return customerAddressRepository.findById(id).get();
 	}
 
+
+//	@Override
+//	public List<CustomerAddress> getCustomerAddressByCustomerEmail(String email) {
+//		// TODO Auto-generated method stub
+//		return customerAddressRepository.getCustomerAddressByCustomerEmail(email);
+//	}
+
 }

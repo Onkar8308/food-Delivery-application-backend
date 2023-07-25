@@ -25,11 +25,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
 public class FoodCart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +41,70 @@ public class FoodCart {
 
 	@OneToMany(mappedBy = "cart")
 	private List<Item> itemList = new ArrayList<>();
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+
+	public Customer getCust() {
+		return cust;
+	}
+
+
+	public void setCust(Customer cust) {
+		this.cust = cust;
+	}
+
+
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
+
+
+	public FoodCart(Integer id, String paymentStatus, Customer cust, List<Item> itemList) {
+		super();
+		this.id = id;
+		this.paymentStatus = paymentStatus;
+		this.cust = cust;
+		this.itemList = itemList;
+	}
+
+
+	public FoodCart() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
+	public String toString() {
+		return "FoodCart [id=" + id + ", paymentStatus=" + paymentStatus + ", cust=" + cust + ", itemList=" + itemList
+				+ "]";
+	}
+	
+	
 	
 	
 

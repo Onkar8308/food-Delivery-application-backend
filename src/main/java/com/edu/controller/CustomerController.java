@@ -87,10 +87,10 @@ public class CustomerController {
 		return customerService.getCustomerByEmail(email);
 	}
 	
-//	@GetMapping("/getCustomerAddByEmail/{email}")
-//	public Set<CustomerAddress> getCustomerAddByEmail(@PathVariable("email") String email) {
-//		return customerService.getCustomerAddByEmail(email);
-//	}
+	@GetMapping("/getCustomerAddByEmail/{email}")
+	public Set<CustomerAddress> getCustomerAddByEmail(@PathVariable("email") String email) {
+		return customerService.getCustomerAddByEmail(email);
+	}
 	
 	
 	

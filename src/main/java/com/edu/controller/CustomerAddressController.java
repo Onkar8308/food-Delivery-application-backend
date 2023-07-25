@@ -72,8 +72,8 @@ public class CustomerAddressController {
 	}
 //	
 //	@GetMapping("/getCustomerAddressByCustomerEmail/{email}")
-//	List<CustomerAddress> getCustomerAddressByCustomerEmail(@path){
-//		return customerAddressService.getCustomerAddressByCustomerEmail();
+//	List<CustomerAddress> getCustomerAddressByCustomerEmail(@PathVariable String email){
+//		return customerAddressService.getCustomerAddressByCustomerEmail(email);
 //	}
 	
 }
