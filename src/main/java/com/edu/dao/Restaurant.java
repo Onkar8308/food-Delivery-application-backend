@@ -80,13 +80,14 @@ public class Restaurant {
 	@OneToMany(mappedBy="rest")
 	List<Item> item = new ArrayList<Item>();
 	
-	public Restaurant( String restname, String managerName, String contactNumber, String pic, String area, String city,
-			 String state, String country, String pincode, String email, String password) {
+	
+	
+	public Restaurant(String restname,String managerName,String contactNumber,String area, String city,String state,String country,String pincode,String email,
+			String password, List<Item> item, boolean status) {
 		super();
 		this.restname = restname;
 		this.managerName = managerName;
 		this.contactNumber = contactNumber;
-		this.item = item;
 		this.pic = pic;
 		this.area = area;
 		this.city = city;
@@ -95,8 +96,21 @@ public class Restaurant {
 		this.pincode = pincode;
 		this.email = email;
 		this.password = password;
-	  }
+		this.item = item;
+		this.status = status;
+	}
+
+	@Column(columnDefinition="boolean default false")
+	private boolean status;
 	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -212,7 +226,7 @@ public class Restaurant {
 		return "Restaurant [restid=" + restid + ", restname=" + restname + ", managerName=" + managerName
 				+ ", contactNumber=" + contactNumber + ", pic=" + pic + ", area=" + area + ", city=" + city + ", state="
 				+ state + ", country=" + country + ", pincode=" + pincode + ", email=" + email + ", password="
-				+ password + ", item=" + item + "]";
-	}	
+				+ password + ", item=" + item + ", status=" + status + "]";
+	}
 	
 }

@@ -69,8 +69,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 			restaurant.setManagerName(restaurantaddress.getManagerName());
 			restaurant.setContactNumber(restaurantaddress.getContactNumber());
 			restaurant.setEmail(restaurantaddress.getEmail());
-			restaurant.setPassword(restaurantaddress.getPassword());
-			
+			restaurant.setPassword(restaurantaddress.getPassword());	
+			restaurant.setStatus(restaurantaddress.isStatus());
 		}
 		
 		return restaurantRepository.save(restaurant);
@@ -122,17 +122,33 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 	
 	
+	@Override
 	public List<Restaurant> getAllRestaurantsearch(String searchkey){
 		
-		//Pageable pageable = (Pageable) PageRequest.of(PageNumber, 12);
-		
 		if(searchkey.equals("")) {
-			return restaurantRepository.findAll();
+			List<Restaurant> res = restaurantRepository.findAll();
+			if(res!=null) {
+			res= restaurantRepository.searchByStatus(res);
+			}
+			else {
+				res=null;
+			}
+			return res;
 		}
 		
-		return restaurantRepository.findByRestnameContainingIgnoreCase(searchkey);
+		List<Restaurant>ress= restaurantRepository.findByRestnameContainingIgnoreCase(searchkey);
+		System.out.println("nidhi"+ress);
+		if(ress!=null) {
+			if(!ress.isEmpty())
+				ress= restaurantRepository.searchByStatus(ress);
+		}
+		else {
+			ress=null;
+		}
+		return ress;
 		
-	}
+		
+	} 
 
 	
 
