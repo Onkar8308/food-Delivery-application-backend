@@ -59,12 +59,6 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepository.save(ite);
 	}
 
-	/*
-	 * Employee eob=employeerepository.findById(empid).get(); 
-	 * Department
-	 * dob=departmentRepository.findById(deptid).get();
-	 * eob.employeeAssignDepartment(dob); return employeerepository.save(eob);
-	 */
 	
 	@Override
 	public Item itemAssignedRestaurant(Integer itemid, Integer restid) {

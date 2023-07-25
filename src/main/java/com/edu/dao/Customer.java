@@ -28,12 +28,14 @@ public class Customer {
 	@Column(nullable = false)
 	private String customername;
 	//@NotNull(message = "Enter Customer Mobile Number") 
+	@Pattern(regexp = "^[5-9]\\d{0,9}$")
 	@Column(length = 10 ,  nullable = false)
-	private long customermobilenumber;
+	private String customermobilenumber;
 
 	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
 	//@NotNull(message = "Enter Customer Email Id") 
-	//@Pattern(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
+	
+	//@Pattern(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
 	@Column(unique = true)
 	private String customeremail;
 	
@@ -59,7 +61,7 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String customername,long customermobilenumber,String customeremail, String password) {
+	public Customer(String customername,String customermobilenumber,String customeremail, String password) {
 		super();
 		this.customername = customername;
 		this.customermobilenumber = customermobilenumber;
@@ -70,6 +72,14 @@ public class Customer {
 	
 	
 
+	public Integer getCustomerid() {
+		return customerid;
+	}
+
+	public void setCustomerid(Integer customerid) {
+		this.customerid = customerid;
+	}
+
 	public String getCustomername() {
 		return customername;
 	}
@@ -78,11 +88,11 @@ public class Customer {
 		this.customername = customername;
 	}
 
-	public long getCustomermobilenumber() {
+	public String getCustomermobilenumber() {
 		return customermobilenumber;
 	}
 
-	public void setCustomermobilenumber(long customermobilenumber) {
+	public void setCustomermobilenumber(String customermobilenumber) {
 		this.customermobilenumber = customermobilenumber;
 	}
 
