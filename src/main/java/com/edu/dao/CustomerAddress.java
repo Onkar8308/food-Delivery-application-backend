@@ -63,7 +63,7 @@ public class CustomerAddress {
 
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name="customerid" , referencedColumnName="customerid")
 	Customer cust;
 	

@@ -14,6 +14,7 @@ public interface CustomerService {
 
 	List<Customer> getAllCustomer();
 
+	
 	List<Customer> deleteCustomerById(Integer customerid);
 
 	Customer updateCustomerById(Integer customerid, @Valid Customer customer);

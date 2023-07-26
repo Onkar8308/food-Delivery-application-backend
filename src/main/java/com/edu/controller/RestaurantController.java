@@ -49,7 +49,7 @@ public class RestaurantController {
 		return new ResponseEntity<Restaurant>(cust, HttpStatus.CREATED);
 	}
 	
-	//http://localhost:9999/getAllRestaurantAddress
+	//http://localhost:9999/getAllRestaurant
 	@GetMapping("/getAllRestaurant")
 	List<Restaurant> getAllRestaurant(){
 		return restaurantService.getAllRestaurant();

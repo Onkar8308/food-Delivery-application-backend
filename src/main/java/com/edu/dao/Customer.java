@@ -64,13 +64,6 @@ public class Customer {
 	}
 
 
-	
-
-	
-
-
-	
-
 	public Customer(String customername,String customermobilenumber,String customeremail, String password) {
 
 		super();
@@ -83,20 +76,10 @@ public class Customer {
 		
 	}
 
-	
-	
-
-
 	public String getCustomername() {
 		return customername;
 	}
 	
-	
-	
-	
-
-	
-
 	public Integer getCustomerid() {
 		return customerid;
 	}

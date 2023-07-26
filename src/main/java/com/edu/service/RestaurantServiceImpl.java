@@ -127,25 +127,23 @@ public class RestaurantServiceImpl implements RestaurantService {
 		
 		if(searchkey.equals("")) {
 			List<Restaurant> res = restaurantRepository.findAll();
-			if(res!=null) {
-			res= restaurantRepository.searchByStatus(res);
-			}
-			else {
-				res=null;
-			}
+			
+			  if(res!=null) 
+			  { res= restaurantRepository.searchByStatus(res); } else 
+			  {
+			  res=null; }
+			 
 			return res;
 		}
-		
+		else {
 		List<Restaurant>ress= restaurantRepository.findByRestnameContainingIgnoreCase(searchkey);
 		System.out.println("nidhi"+ress);
-		if(ress!=null) {
-			if(!ress.isEmpty())
-				ress= restaurantRepository.searchByStatus(ress);
-		}
-		else {
-			ress=null;
-		}
+		/*
+		 * if(ress!=null) { if(!ress.isEmpty()) ress=
+		 * restaurantRepository.searchByStatus(ress); } else { ress=null; }
+		 */
 		return ress;
+		}
 		
 		
 	} 

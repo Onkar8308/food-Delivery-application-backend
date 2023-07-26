@@ -18,6 +18,7 @@ public interface CustomerAddressService {
 	public CustomerAddress updateCustomerAddressById(Integer addressid, CustomerAddress customeraddress) throws GlobalException;
 
 	
+	
 
 	CustomerAddress customerAssigncustomeraddress(Integer custid, Integer addid);
 

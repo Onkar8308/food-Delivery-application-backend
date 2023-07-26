@@ -43,14 +43,14 @@ public class Item {
 	
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name="restid" , referencedColumnName="restid")
 	Restaurant rest;
 	
 	
 
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name="cartId" , referencedColumnName="foodCart_Id")
 	FoodCart cart; 
 	

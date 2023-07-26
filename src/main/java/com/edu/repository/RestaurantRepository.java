@@ -20,7 +20,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 //	@Query("SELECT r FROM restaurant r WHERE CONCAT(r.restname) LIKE %?1%")
 //	public List<Restaurant> searchByRestaurantName(String keyword);
 
-
+	@Query(value = "select * from restaurant where restname like %?% and status=true" ,nativeQuery = true)
 	public List<Restaurant> findByRestnameContainingIgnoreCase(String key1);
 
 	public List<Restaurant> findAll();
