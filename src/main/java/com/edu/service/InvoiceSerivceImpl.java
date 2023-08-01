@@ -18,12 +18,6 @@ public class InvoiceSerivceImpl implements InvoiceService {
 	@Autowired
 	private InvoiceRepository invoiceRepository;
 
-//	@Override
-//	public Invoice saveInvoice(@Valid Invoice invoice) {
-//		// TODO Auto-generated method stub
-//		return invoiceRepository.save(invoice);
-//	}
-
 	@Override
 	public List<Invoice> getAllInvoice() {
 		// TODO Auto-generated method stub

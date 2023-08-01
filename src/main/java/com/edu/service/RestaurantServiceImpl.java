@@ -91,10 +91,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 			if(list.isEmpty()){
 				List<Item> newList = new ArrayList<>();
 				newList.add(itemRepository.save(item));
-//				restaurant.setItem(newList);
-//				
-//				System.out.println(newList);
-//				restaurantRepository.save(restaurant);
 				int id=item.getItemid();
 				
 				Item eob=itemRepository.findById(id).get();
@@ -138,10 +134,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		else {
 		List<Restaurant>ress= restaurantRepository.findByRestnameContainingIgnoreCase(searchkey);
 		System.out.println("nidhi"+ress);
-		/*
-		 * if(ress!=null) { if(!ress.isEmpty()) ress=
-		 * restaurantRepository.searchByStatus(ress); } else { ress=null; }
-		 */
 		return ress;
 		}
 		
@@ -161,39 +153,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		 return restaurantRepository.getRestaurantByEmail(email,password);
 	}
-
-
-
-
-//	@Override
-//	public Restaurant getRestaurantByEmail1(String email, String password) {
-
-//	@Override
-//	public Restaurant getRestaurantByEmail(String email, String password) {
-
-//		// TODO Auto-generated method stub
-//		return restaurantRepository.getRestaurantByEmail(email,password);
-//	}
-
-//	@Override
-//	public Restaurant findRestaurantByName(String restname) throws GlobalException {
-//		// TODO Auto-generated method stub
-//		return restaurantRepository.findByrestaurantName(restname);
-//	}
-//
-//	@Override
-//	public Restaurant updateRestaurantManagerName(@Valid Integer id, @Valid String managerName) throws GlobalException {
-//		// TODO Auto-generated method stub
-//		Optional<Restaurant> res = restaurantRepository.findById(id);
-//		if (!res.isPresent())
-//			throw new GlobalException("Restaurnat with id : " + id + " not exist");
-//
-//		Restaurant restaurant = restaurantRepository.findById(id).get();
-//		restaurant.setManagerName(managerName);
-//		return restaurantRepository.save(restaurant);
-//	}
 	
-	
-	
-
+	@Override
+	public Integer getRestaurantByEmail(String email) {
+		// TODO Auto-generated method stub
+		
+		return restaurantRepository.getRestaurantByEmail(email);
+	}
 }

@@ -11,14 +11,6 @@ import com.edu.dao.Restaurant;
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>{
 
-//	Restaurant findByrestaurantName(String restname);
-	
-//	@Query("SELECT r.restname FROM restaurant as r WHERE r.restname LIKE %?1%")
-//	public List<Restaurant> search(String keyword);
-//	
-//	
-//	@Query("SELECT r FROM restaurant r WHERE CONCAT(r.restname) LIKE %?1%")
-//	public List<Restaurant> searchByRestaurantName(String keyword);
 
 	@Query(value = "select * from restaurant where restname like %?% and status=true" ,nativeQuery = true)
 	public List<Restaurant> findByRestnameContainingIgnoreCase(String key1);
@@ -36,6 +28,8 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 	@Query(value = "select * from restaurant where status=true ",nativeQuery = true)
 	public List<Restaurant> searchByStatus(List<Restaurant> listrest);
 	
+	@Query(value = "select restid from restaurant where email=?",nativeQuery = true)
+	public Integer getRestaurantByEmail(String email);
 
 
 }

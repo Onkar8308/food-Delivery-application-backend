@@ -74,7 +74,6 @@ public class Restaurant {
 	@Column(unique = true)
 	private String email;
 		
-//		@Column(unique = true)
 	private String password;
 	
 	@JsonIgnore

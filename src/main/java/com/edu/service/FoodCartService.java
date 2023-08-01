@@ -23,12 +23,6 @@ public interface FoodCartService {
 
 	FoodCart getCartBYEmail(String email) throws GlobalException;
 
-//	FoodCart deleteItemInCartByID(Integer cartID) throws GlobalException;
-
-//	String deleteCartByCustID(Integer custID);
-
-	//FoodCart updateItemToNull(Integer id);
-
 	FoodCart updatePaymentStatus(Integer id);
 
 }

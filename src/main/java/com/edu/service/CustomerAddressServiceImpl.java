@@ -84,10 +84,4 @@ public class CustomerAddressServiceImpl implements CustomerAddressService{
 	}
 
 
-//	@Override
-//	public List<CustomerAddress> getCustomerAddressByCustomerEmail(String email) {
-//		// TODO Auto-generated method stub
-//		return customerAddressRepository.getCustomerAddressByCustomerEmail(email);
-//	}
-
 }

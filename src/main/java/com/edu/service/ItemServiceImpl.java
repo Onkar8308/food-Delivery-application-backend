@@ -44,8 +44,6 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepository.findAll();
 	}
 
-
-
 	@Override
 	public Item updateItemById(Integer itemid, Item item)
 			throws GlobalException {
@@ -79,33 +77,6 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemRepository.getItemByRestId(addressid);
 	}
-
-//	@Override
-//	public Item saveItemByRestId(Item item, Integer restid) throws GlobalException {
-//		// TODO Auto-generated method stub
-//		Optional<Restaurant> res = restaurantRepository.findById(restid);
-//		
-//		if(!res.isPresent()) {
-//			throw new GlobalException(restid+ " is not present");
-//		}
-//		else {
-////			Item i 
-//			Restaurant restaurant = restaurantRepository.findById(restid).get();
-//			List<Item> list = restaurant.getItem();
-//			if(list.isEmpty()){
-//				List<Item> newList = new ArrayList<>();
-//				newList.add(item);
-//				restaurant.setItem(newList);
-//				restaurantRepository.save(restaurant);
-//				return item;
-//				}
-//			else {
-//				list.add(item);
-//				restaurantRepository.save(restaurant);
-//				return item;
-//			}
-//		}
-//	}
 	
 	@Override
 	public Item saveItemByRestId(Item item, Integer restid) throws GlobalException {
@@ -116,7 +87,6 @@ public class ItemServiceImpl implements ItemService {
 			throw new GlobalException(restid+ " is not present");
 		}
 		else {
-//			Item i 
 			Restaurant restaurant = restaurantRepository.findById(restid).get();
 			List<Item> list = restaurant.getItem();
 			if(list.isEmpty()){
@@ -139,10 +109,7 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		System.out.println(itemid);
 		
-		itemRepository.deleteById(itemid);
-		
-//		List<Item> it = itemRepository.getItemByRestId(restid);
-				
+		itemRepository.deleteById(itemid);		
 		return itemRepository.getItemByRestId(restid);
 	}
 
@@ -151,24 +118,4 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemRepository.findById(itemid).get();
 	}
-
-//	@Override
-//	public Item assignItemToCart(Integer itemID, Integer cartID) {
-//		// TODO Auto-generated method stub
-//		Item item = itemRepository.findById(itemID).get();
-//		System.out.println(item);
-//		FoodCart cart = cartRepo.findById(cartID).get();
-//		System.out.println(cart);
-//		cart.assignItemToCart(item);
-//		System.out.println(cart);
-//		cartRepo.save(cart);
-//		return item;
-//	}
-
-	
-
-	
-
-	
-
 }

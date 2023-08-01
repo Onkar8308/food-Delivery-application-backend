@@ -64,12 +64,6 @@ public class CustomerServiceImpl implements CustomerService {
 		return cus;
 	}
 
-//	@Override
-//	public List<Customer> findByCustomernameAndCustomerpassword(String cname, String cpass) {
-//		// TODO Auto-generated method stub
-//		return customerRepository.findByCustomernameAndCustomerpassword(cname, cpass);
-//	}
-
 	//login
 	@Override
 	public Customer getCustomerByEmail(String email,String password) {
@@ -109,12 +103,10 @@ public class CustomerServiceImpl implements CustomerService {
 				CustomerAddress newadd=cusAddRepo.findById(id).get();
 				Customer dob= customerRepository.findById(id).get();
 				newadd.addressAssignedCustomer(dob);
-//				customer.setCob(add);
 				return customerRepository.save(dob);
 			}
 		}
 		else {
-//			throw new GlobalException("")
 			return null;
 		}
 	}

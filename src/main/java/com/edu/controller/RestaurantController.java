@@ -37,11 +37,6 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	
-	// http://localhost:8990/saveRestaurantAddress
-//	@PostMapping("/saveRestaurantAddress")
-//	RestaurantAddress saveRestaurantAddress(@RequestBody RestaurantAddress restaurantaddress) {
-//		return restaurantAddressService.saveRestaurantAddress(restaurantaddress);
-//	}
 	
 	@PostMapping("/saveRestaurant")
 	public ResponseEntity<Restaurant> saveRestaurant(@Valid @RequestBody Restaurant restaurant){
@@ -67,28 +62,12 @@ public class RestaurantController {
 	Object updateRestaurantById(@PathVariable("restid") Integer restid, @RequestBody Restaurant restaurant) throws GlobalException {
 		return restaurantService.updateRestaurantById(restid, restaurant);
 	}
-	
-//	@RequestMapping(method = RequestMethod.GET,value = "/findByName/{name}")
-//	public ResponseEntity<Restaurant> findRetaurantByName(@PathVariable("name") String restname) throws GlobalException {
-//		Restaurant restaurant  = restaurantService.findRestaurantByName(restname);
-//		return new ResponseEntity<Restaurant>(restaurant,HttpStatus.FOUND);
-//	}
-//	
-//	@RequestMapping(method = RequestMethod.PUT,value = "/updateManagerName/{id}/{managerName}")
-//	public ResponseEntity<Restaurant> updaterestaurantManagerName(@Valid @PathVariable("id") Integer id,@Valid  @PathVariable("managerName") String managerName) throws GlobalException {
-//		Restaurant restaurant = restaurantService.updateRestaurantManagerName(id, managerName);
-//		return new ResponseEntity<Restaurant>(restaurant,HttpStatus.ACCEPTED);
-//	}
+
 	
 	@GetMapping("/getRestaurantById/{restid}")
 	public Restaurant getRestaurantById(@PathVariable("restid") Integer restid) {
 		return restaurantService.getRestaurantById(restid);
 	}
-//	@PostMapping("/saveItemByRestIdi/{restid}")
-//	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
-//		return restaurantService.saveItemByRestIdi(item,restid);
-//		 
-//	}
 	
 	@PostMapping("/saveItemByRestIdi/{restid}")
 	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item,	 @PathVariable("restid") Integer restid) throws GlobalException {
@@ -96,10 +75,6 @@ public class RestaurantController {
 		 return restaurantRepository.findById(restid).get();
 	}
 	
-//	@PostMapping("/saveItemByRestIdi/{restid}")
-//	public List<Restaurant> saveItemByRestIdi(@Valid @RequestBody Item item, @PathVariable("restid") Integer restid) throws GlobalException {
-//		return restaurantService.saveItemByRestIdi(item,restid);
-//	}
 	
 	@GetMapping("/getRestaurantByEmail/{email}/{password}")
 	public Restaurant getRestaurantByEmail(@PathVariable("email") String email,@PathVariable("password") String password) throws GlobalException {
@@ -110,9 +85,12 @@ public class RestaurantController {
 	@GetMapping("/getAllRestaurantsearch")
 	public List<Restaurant> getAllRestaurantsearch(@RequestParam(defaultValue = "") String searchkey){
 		List<Restaurant> result = restaurantService.getAllRestaurantsearch(searchkey);
-		//System.out.println("Result size is: " + result.size());
 		return result;
 		
-		//return restaurantService.getAllRestaurantsearch(searchkey);
+	}
+	
+	@GetMapping("/getRestaurantByEmail/{email}")
+	public Integer getRestaurantByEmail(@PathVariable("email") String Email) {
+		return restaurantService.getRestaurantByEmail( Email);
 	}
 }

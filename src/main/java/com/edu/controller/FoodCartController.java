@@ -57,11 +57,6 @@ public class FoodCartController {
 		return cartSerice.updateCartByItem(id,item);
 	}
 	
-//	@RequestMapping(value = "/updateItemToNull/{id}",method = RequestMethod.PUT)
-//	public FoodCart updateItemToNull(@PathVariable("id") Integer id) {
-//		return cartSerice.updateItemToNull(id);
-//		
-//	}
 	
 	@PutMapping("/updateCartByCustomer/{cartID}")
 	public FoodCart updateCartbyCustomer(@PathVariable("cartID") Integer id,@RequestBody Customer cust) throws GlobalException {
@@ -73,15 +68,6 @@ public class FoodCartController {
 		return cartSerice.getCartBYEmail(email);
 	}
 	
-//	@RequestMapping(value = "/deleteItemInCartById/{cartId}",method = RequestMethod.DELETE)
-//	public FoodCart deleteItemInCartByID(@PathVariable("cartId") Integer cartID) throws GlobalException {
-//		return cartSerice.deleteItemInCartByID(cartID);
-//	}
-	
-//	@RequestMapping(value = "/deleteCartById/{cartId}",method = RequestMethod.DELETE)
-//	public String deleteCartByID(@PathVariable("cartId") Integer cartID) throws GlobalException {
-//		return cartSerice.deleteCartByID(cartID);
-//	}
 	
 	@GetMapping(value = "updatePaymentStatus/{id}")
 	public FoodCart updatePaymentStatus(@PathVariable("id") Integer id) {

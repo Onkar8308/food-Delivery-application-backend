@@ -59,7 +59,6 @@ public class FoodCartServiceImpl implements FoodCartService {
 		}
 		else
 			throw new GlobalException("cart with id not exist");
-		//return null;
 	}
 
 	@Override
@@ -90,15 +89,7 @@ public class FoodCartServiceImpl implements FoodCartService {
 		FoodCart cart = cartRepo.findById(id).get();
 		Integer custId = cust.getCustomerid();
 		cart.setCust(cust);
-//		System.out.println(cus
 		return cartRepo.save(cart) ;
-//		FoodCart cart1 = cart.get(); 
-//		Customer cut = custrepo.findById(custId).get();
-////		cut.assignCartToCustomer(cart1);
-//		cartRepo.save(cart1);
-//		System.out.println( cartRepo.findById(cart1.getId()));
-//		return null;
-
 	}
 
 	@Override
@@ -115,56 +106,8 @@ public class FoodCartServiceImpl implements FoodCartService {
 		}
 	}
 
-//	@Override
-//	public FoodCart deleteItemInCartByID(Integer cartID) throws GlobalException {
-//		// TODO Auto-generated method stub
-//		FoodCart existingcart = cartRepo.findById(cartID).get();
-////		if (existingcart.isPresent()) {
-//			FoodCart cart = cartRepo.findById(cartID).get();
-//			List<Item> itemList = cart.getItemList();
-//			
-//			for (int i = 0; i < itemList.size();i++) {
-//				itemList.remove(i);
-//			
-//			}
-//			cart.setItemList(itemList);
-//			//System.out.println(itemList);
-//	
-////			return cartRepo.save(cart);
-////
-////		} else {
-////			throw new GlobalException("cart not exist");
-////		}
-//			System.out.println(existingcart);
-//		return cartRepo.save(existingcart);
-//		
-//
-//	}
-
-//	@Override
-//	public String deleteCartByID(Integer cartID) {
-//		// TODO Auto-generated method stub
-//		cartRepo.deleteById(cartID);;
-//				return "cart deleted";
-//	}
 
 	@SuppressWarnings("null")
-//	@Override
-//	public FoodCart updateItemToNull(Integer id) {
-//		// TODO Auto-generated method stub
-//		FoodCart existingcart = cartRepo.findById(id).get();
-//		List<Item> itemList = null;
-//		itemList.add(itemRepo.save(null));
-//		int itemId = item.getItemid();
-//		Item assigingitem = itemRepo.findById(itemId).get();
-//		assigingitem.assignCart(cart);
-//		return cartRepo.save(cart);
-//		Item item = null;
-//		item.assignCart(existingcart);
-//		existingcart.setItemList(null);
-//		return cartRepo.save(existingcart);
-//	}
-
 	@Override
 	public FoodCart updatePaymentStatus(Integer id) {
 		// TODO Auto-generated method stub

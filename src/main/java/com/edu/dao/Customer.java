@@ -24,32 +24,25 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerid;
-	//@NotNull(message = "Enter Customer Name") 
+	
 	@Column(nullable = false)
 	private String customername;
-	//@NotNull(message = "Enter Customer Mobile Number") 
+	
 	@Pattern(regexp = "^[5-9]\\d{0,9}$")
 	@Column(length = 10 ,  nullable = false)
 	private String customermobilenumber;
 
 	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}" , message = "invalid Email")
-	//@NotNull(message = "Enter Customer Email Id") 
-
-	
 	@Column(unique = true)
 	private String customeremail;
 	
-	//@NotNull(message = "Enter password")
 	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password")
 	private String password;
 	
 	@OneToMany(mappedBy="cust")
 	Set<CustomerAddress> cob = new HashSet<CustomerAddress>();
 	
-//	@JsonIgnore
-//	@OneToOne(mappedBy = "cust")
-//	private FoodCart cart;
-	
+
 	public Set<CustomerAddress> getCob() {
 		return cob;
 	}
@@ -125,10 +118,7 @@ public class Customer {
 				+ "]";
 	}
 
-//	public void assignCartToCustomer(FoodCart cart2) {
-//		// TODO Auto-generated method stub
-//		this.cart = cart2;
-//	}
+
 
 	
 

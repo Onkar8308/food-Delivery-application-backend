@@ -50,16 +50,9 @@ public class CustomerAddress {
 	@Column(nullable = false)
 	private String country;
 	
-//	@NotEmpty(message = "Please enter pincode")
-//	@NotBlank(message = "Please enter pincode")
 	@Column(length = 6, nullable = false)
-
 	@Size(min = 6, max = 6, message = "Pincode must be 6 digit")
-	//@Min(value = 6, message = "Pincode must be 6 digit")
-	//@Max(value = 7, message = "Pincode must be 6 digit")
 	private String pincode;
-
-	//private int pincode;
 
 	
 	@JsonIgnore
