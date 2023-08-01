@@ -54,6 +54,33 @@ public class Item {
 	@JoinColumn(name="cartId" , referencedColumnName="foodCart_Id")
 	FoodCart cart; 
 	
+	@OneToMany(mappedBy = "item")
+	List<Orders> order = new ArrayList<Orders>();
+	
+	
+
+	public FoodCart getCart() {
+		return cart;
+	}
+
+
+
+	public void setCart(FoodCart cart) {
+		this.cart = cart;
+	}
+
+
+
+	public List<Orders> getOrder() {
+		return order;
+	}
+
+
+
+	public void setOrder(List<Orders> order) {
+		this.order = order;
+	}
+
 
 
 	public Item() {

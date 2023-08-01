@@ -41,6 +41,21 @@ public class FoodCart {
 
 	@OneToMany(mappedBy = "cart")
 	private List<Item> itemList = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "foodcart")
+	List<Orders> order = new ArrayList<Orders>();
+	
+	
+
+
+	public List<Orders> getOrder() {
+		return order;
+	}
+
+
+	public void setOrder(List<Orders> order) {
+		this.order = order;
+	}
 
 
 	public Integer getId() {

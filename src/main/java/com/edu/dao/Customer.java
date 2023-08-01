@@ -1,6 +1,8 @@
 package com.edu.dao;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,6 +44,19 @@ public class Customer {
 	@OneToMany(mappedBy="cust")
 	Set<CustomerAddress> cob = new HashSet<CustomerAddress>();
 	
+
+	@OneToMany(mappedBy = "cus")
+	List<Orders> order = new ArrayList<Orders>();
+	
+	
+	
+	public List<Orders> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Orders> order) {
+		this.order = order;
+	}
 
 	public Set<CustomerAddress> getCob() {
 		return cob;

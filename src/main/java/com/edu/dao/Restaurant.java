@@ -2,6 +2,7 @@ package com.edu.dao;
 
 import java.util.*;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -81,7 +82,22 @@ public class Restaurant {
 	List<Item> item = new ArrayList<Item>();
 	
 	
+//	@OneToMany(mappedBy="res")
+//	List<Order> order = new ArrayList<Order>();
 	
+	@OneToMany(mappedBy = "res")
+	List<Orders> order = new ArrayList<Orders>();
+	
+	
+	
+	public List<Orders> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Orders> order) {
+		this.order = order;
+	}
+
 	public Restaurant(String restname,String managerName,String contactNumber,String area, String city,String state,String country,String pincode,String email,
 			String password, List<Item> item, boolean status) {
 		super();
