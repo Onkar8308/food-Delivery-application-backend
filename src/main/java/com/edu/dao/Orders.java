@@ -17,6 +17,9 @@ public class Orders {
 	
 	@Column
 	private String status;
+	
+	@Column
+	private String orderDate;
 
 	
 	@JsonIgnore
@@ -46,14 +49,21 @@ public class Orders {
 	}
 
 
-	public Orders(String status, Restaurant res, Item item, Customer cus, FoodCart foodcart) {
+	
+
+
+	public Orders(String status, String orderDate, Restaurant res, Item item, Customer cus, FoodCart foodcart) {
 		super();
 		this.status = status;
+		this.orderDate = orderDate;
 		this.res = res;
 		this.item = item;
 		this.cus = cus;
 		this.foodcart = foodcart;
 	}
+
+
+
 
 
 	public Integer getOrderid() {
@@ -114,13 +124,30 @@ public class Orders {
 	public void setFoodcart(FoodCart foodcart) {
 		this.foodcart = foodcart;
 	}
+	
+	
+
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
+
+
 
 
 	@Override
 	public String toString() {
-		return "Orders [orderid=" + orderid + ", status=" + status + ", res=" + res + ", item=" + item + ", cus=" + cus
-				+ ", foodcart=" + foodcart + "]";
+		return "Orders [orderid=" + orderid + ", status=" + status + ", orderDate=" + orderDate + ", res=" + res
+				+ ", item=" + item + ", cus=" + cus + ", foodcart=" + foodcart + "]";
 	}
+
+
 		
 	
 }
