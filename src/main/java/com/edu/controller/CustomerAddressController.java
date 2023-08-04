@@ -20,49 +20,52 @@ import com.edu.dao.CustomerAddress;
 import com.edu.error.GlobalException;
 import com.edu.service.CustomerAddressService;
 
-@CrossOrigin(origins = "http://localhost:4200")//connect with angular
+@CrossOrigin(origins = "http://localhost:4200")//connect with ang
 @RestController
 public class CustomerAddressController {
 	
 	@Autowired
 	private CustomerAddressService customerAddressService;
 	
-	//http://localhost:9999/SaveCustomerAdderess
+	
+
+	
 	@PostMapping("/saveCustomerAddress")
 	public ResponseEntity<CustomerAddress> saveCustomerAddress(@Valid @RequestBody CustomerAddress customeraddress){
 		CustomerAddress cust = customerAddressService.saveCustomerAddress(customeraddress);
 		return new ResponseEntity<CustomerAddress>(cust, HttpStatus.CREATED);
 	}
 	
-	//http://localhost:9999/getAllCustomerAddress
+	
+	
+	//http://localhost:8990/getAllCustomerAddress
 	@GetMapping("/getAllCustomerAddress")
 	List<CustomerAddress> getAllCustomerAddress(){
 		return customerAddressService.getAllCustomerAddress();
 	}
 	
-	//http://localhost:9999/deleteCustomerAddressById/{addid}
+	//http://localhost:8990/deleteCustomerAddressById/{addid}
 	@DeleteMapping("/deleteCustomerAddressById/{addid}")
-	String deleteCustomerAddressById(@PathVariable("addid") Integer addressid) throws GlobalException {
-		customerAddressService.deleteCustomerAddressById(addressid);
-		return "Record Deleted";
+	List<CustomerAddress> deleteCustomerAddressById(@PathVariable("addid") Integer addressid) throws GlobalException {
+	return 	customerAddressService.deleteCustomerAddressById(addressid);
+		
 	}
 	
-	//http://localhost:9999/getCustomerAddById/{id}
 	@GetMapping("/getCustomerAddById/{id}")
 	public CustomerAddress getCustomerAddById(@PathVariable("id") Integer id) {
 		return customerAddressService.getCustomerAddById(id);
 	}
 	
-	//http://localhost:9999/updateCustomerAddressById/{addid}
+	//http://localhost:8990/updateCustomerAddressById/{addid}
 	@PutMapping("/updateCustomerAddressById/{addid}")
 	CustomerAddress updateCustomerAddressById(@PathVariable("addid") Integer addressid, @RequestBody CustomerAddress customeraddress) throws GlobalException {
 		return customerAddressService.updateCustomerAddressById(addressid,customeraddress);
 	}
 	
-	//http://localhost:9999/customerAssignedcustommeraddress/{custid}/customerAddress/{addid}
 	@GetMapping("/customerAssigncustomeraddress/customer/{custid}/customerAddress/{addid}")
 	public CustomerAddress customerAssigncustomeraddress(@PathVariable Integer custid, @PathVariable Integer addid) {
 		return customerAddressService.customerAssigncustomeraddress(custid, addid);
 	}
+
 	
 }

@@ -30,52 +30,49 @@ public class FoodCartServiceImpl implements FoodCartService {
 	@Override
 	public FoodCart savecart(FoodCart foodCart) {
 		foodCart.setPaymentStatus("unpaid");
-		// TODO Auto-generated method stub
+
 		return cartRepo.save(foodCart);
 	}
 
 	@Override
 	public FoodCart getCartById(Integer id) {
-		// TODO Auto-generated method stub
-		
-		FoodCart cart =cartRepo.getCartByvalidItem(id);
+
+		FoodCart cart = cartRepo.getCartByvalidItem(id);
 		System.out.println(cart.getItemList());
 		return cart;
 	}
 
 	@Override
 	public List<FoodCart> getAllCart() {
-		// TODO Auto-generated method stub
+
 		return cartRepo.getAllFoodCart();
 	}
 
 	@Override
 	public List<Item> getItemByCartId(Integer id) throws GlobalException {
-		// TODO Auto-generated method stub
+
 		FoodCart cart = cartRepo.findById(id).get();
-		if(cart!=null) {
+		if (cart != null) {
 			List<Item> itemList = cart.getItemList();
 			return itemList;
-		}
-		else
+		} else
 			throw new GlobalException("cart with id not exist");
+
 	}
 
 	@Override
 	public FoodCart updateCartByItem(Integer id, Item item) throws GlobalException {
-		// TODO Auto-generated method stub
+
 		Optional<FoodCart> existingcart = cartRepo.findById(id);
 		if (existingcart.isPresent()) {
 			FoodCart cart = existingcart.get();
 			List<Item> itemList = cart.getItemList();
 
-			// List<Item> itemsss = new ArrayList<>();
 			itemList.add(itemRepo.save(item));
 			int itemId = item.getItemid();
 			Item assigingitem = itemRepo.findById(itemId).get();
 			assigingitem.assignCart(cart);
 			return cartRepo.save(cart);
-			// return assigingitem;
 
 		} else {
 			throw new GlobalException("cart not exist");
@@ -85,16 +82,18 @@ public class FoodCartServiceImpl implements FoodCartService {
 
 	@Override
 	public FoodCart updateCartbyCustomer(Integer id, Customer cust) {
-		// TODO Auto-generated method stub
+
 		FoodCart cart = cartRepo.findById(id).get();
 		Integer custId = cust.getCustomerid();
 		cart.setCust(cust);
-		return cartRepo.save(cart) ;
+
+		return cartRepo.save(cart);
+
 	}
 
 	@Override
 	public FoodCart getCartBYEmail(String email) throws GlobalException {
-		// TODO Auto-generated method stub
+
 		Customer customer = custrepo.getCustomerByEmail1(email);
 		if (customer == null) {
 			throw new GlobalException("customer with emailID: " + email + " not exist");
@@ -106,18 +105,15 @@ public class FoodCartServiceImpl implements FoodCartService {
 		}
 	}
 
-
-	@SuppressWarnings("null")
 	@Override
 	public FoodCart updatePaymentStatus(Integer id) {
-		// TODO Auto-generated method stub
+
 		Optional<FoodCart> existingcart = cartRepo.findById(id);
-		if(existingcart.isPresent()) {
+		if (existingcart.isPresent()) {
 			FoodCart cart = cartRepo.findById(id).get();
 			cart.setPaymentStatus("paid");
-		return	cartRepo.save(cart);
-		}
-		else {
+			return cartRepo.save(cart);
+		} else {
 			return null;
 		}
 	}

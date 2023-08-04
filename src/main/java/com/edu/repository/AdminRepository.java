@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import com.edu.dao.Admin;
 
 @Repository
-public interface AdminRepository extends JpaRepository<Admin, Integer>{
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
-	@Query(value = "select * from admin where username=? and password=?",nativeQuery = true)
-    Admin getAdminByusername(String username, String password);
+	@Query(value = "select * from admin where username=? and password=?", nativeQuery = true)
 
+	Admin getAdminByusername(String username, String password);
 
 }

@@ -37,6 +37,7 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	
+
 	
 	@PostMapping("/saveRestaurant")
 	public ResponseEntity<Restaurant> saveRestaurant(@Valid @RequestBody Restaurant restaurant){
@@ -44,7 +45,7 @@ public class RestaurantController {
 		return new ResponseEntity<Restaurant>(cust, HttpStatus.CREATED);
 	}
 	
-	//http://localhost:9999/getAllRestaurant
+	//http://localhost:9999/getAllRestaurantAddress
 	@GetMapping("/getAllRestaurant")
 	List<Restaurant> getAllRestaurant(){
 		return restaurantService.getAllRestaurant();
@@ -62,12 +63,13 @@ public class RestaurantController {
 	Object updateRestaurantById(@PathVariable("restid") Integer restid, @RequestBody Restaurant restaurant) throws GlobalException {
 		return restaurantService.updateRestaurantById(restid, restaurant);
 	}
-
 	
+
 	@GetMapping("/getRestaurantById/{restid}")
 	public Restaurant getRestaurantById(@PathVariable("restid") Integer restid) {
 		return restaurantService.getRestaurantById(restid);
 	}
+
 	
 	@PostMapping("/saveItemByRestIdi/{restid}")
 	public  Restaurant saveItemByRestIdi(@Valid @RequestBody Item item,	 @PathVariable("restid") Integer restid) throws GlobalException {
@@ -75,6 +77,7 @@ public class RestaurantController {
 		 return restaurantRepository.findById(restid).get();
 	}
 	
+
 	
 	@GetMapping("/getRestaurantByEmail/{email}/{password}")
 	public Restaurant getRestaurantByEmail(@PathVariable("email") String email,@PathVariable("password") String password) throws GlobalException {
@@ -85,8 +88,8 @@ public class RestaurantController {
 	@GetMapping("/getAllRestaurantsearch")
 	public List<Restaurant> getAllRestaurantsearch(@RequestParam(defaultValue = "") String searchkey){
 		List<Restaurant> result = restaurantService.getAllRestaurantsearch(searchkey);
+		//System.out.println("Result size is: " + result.size());
 		return result;
-		
 	}
 	
 	@GetMapping("/getRestaurantByEmail/{email}")
@@ -98,4 +101,5 @@ public class RestaurantController {
 	public List<Item> viewOrdersByRestauranat(@PathVariable("id") Integer id) {
 		return restaurantService.viewOrdersByRestauranat(id);
 	}
+	
 }

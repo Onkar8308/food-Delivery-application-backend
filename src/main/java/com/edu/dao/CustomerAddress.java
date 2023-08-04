@@ -3,6 +3,7 @@ package com.edu.dao;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -54,8 +56,7 @@ public class CustomerAddress {
 	@Size(min = 6, max = 6, message = "Pincode must be 6 digit")
 	private String pincode;
 
-	
-	@JsonIgnore
+
 	@ManyToOne()
 	@JoinColumn(name="customerid" , referencedColumnName="customerid")
 	Customer cust;
@@ -128,7 +129,7 @@ public class CustomerAddress {
 				+ ", country=" + country + ", pincode=" + pincode + "]";
 	}
 	
-	public void customerAssigncustomeraddress(Customer cob) {
+	public void customerAssigncustomeraddress(Customer cob) { //assigning customer to customer add
 		// TODO Auto-generated method stub
 		this.cust = cob;
 		

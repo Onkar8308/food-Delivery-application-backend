@@ -34,27 +34,26 @@ public class FoodCart {
 	@Column(name = "paymentStatus")
 	private String paymentStatus;
 	
-	@OneToOne(targetEntity = Customer.class,cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "custId",referencedColumnName = "customerid")
 	private Customer cust;
 	
 
 	@OneToMany(mappedBy = "cart")
 	private List<Item> itemList = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "foodcart")
-	List<Orders> order = new ArrayList<Orders>();
-	
-	
 
 
-	public List<Orders> getOrder() {
-		return order;
+	public FoodCart() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 
-	public void setOrder(List<Orders> order) {
-		this.order = order;
+	public FoodCart(String paymentStatus, Customer cust, List<Item> itemList) {
+		super();
+		this.paymentStatus = paymentStatus;
+		this.cust = cust;
+		this.itemList = itemList;
 	}
 
 
@@ -98,29 +97,11 @@ public class FoodCart {
 	}
 
 
-	public FoodCart(Integer id, String paymentStatus, Customer cust, List<Item> itemList) {
-		super();
-		this.id = id;
-		this.paymentStatus = paymentStatus;
-		this.cust = cust;
-		this.itemList = itemList;
-	}
-
-
-	public FoodCart() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
 	@Override
 	public String toString() {
 		return "FoodCart [id=" + id + ", paymentStatus=" + paymentStatus + ", cust=" + cust + ", itemList=" + itemList
 				+ "]";
 	}
-	
-	
-	
 	
 
 }

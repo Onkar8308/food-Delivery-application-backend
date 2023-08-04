@@ -10,8 +10,7 @@ import com.edu.dao.Restaurant;
 
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>{
-
-
+	
 	@Query(value = "select * from restaurant where restname like %?% and status=true" ,nativeQuery = true)
 	public List<Restaurant> findByRestnameContainingIgnoreCase(String key1);
 
@@ -30,6 +29,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 	
 	@Query(value = "select restid from restaurant where email=?",nativeQuery = true)
 	public Integer getRestaurantByEmail(String email);
+	
 
 
 }

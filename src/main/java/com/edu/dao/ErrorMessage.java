@@ -9,7 +9,7 @@ public class ErrorMessage {
 
 	public ErrorMessage() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ErrorMessage(HttpStatus httpStatus, String message) {

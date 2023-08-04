@@ -21,19 +21,16 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public Admin saveAdmin(@Valid Admin admin) {
-		// TODO Auto-generated method stub
 		return adminRepository.save(admin);
 	}
 
 	@Override
 	public List<Admin> getAllAdmin() {
-		// TODO Auto-generated method stub
 		return adminRepository.findAll();
 	}
 
 	@Override
 	public void deleteAdminById(Integer adminid) throws GlobalException {
-		// TODO Auto-generated method stub
 		Optional<Admin> admin = adminRepository.findById(adminid);
 		if(!admin.isPresent()) {
 			throw new GlobalException("Admin id= " + adminid + " does not exist");
@@ -43,7 +40,6 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public Admin updateAdminById(Integer adminid, Admin admin) throws GlobalException {
-		// TODO Auto-generated method stub
 		Admin a = null;
 		Optional<Admin> admin1 = adminRepository.findById(adminid);
 		if(!admin1.isPresent()) {
@@ -60,13 +56,12 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public Admin getAdminById(Integer adminid) {
-		// TODO Auto-generated method stub
 		return adminRepository.findById(adminid).get();
 	}
 
 	@Override
 	public Admin getAdminByusername(String username, String password) {
-		// TODO Auto-generated method stub
+	
 		return adminRepository.getAdminByusername(username,password);
 	}
 

@@ -29,7 +29,8 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	//http://localhost:9999/saveCustomer
+	
+	//http://localhost:8990/saveCustomer
 	@PostMapping("/saveCustomer")
 	public ResponseEntity<Customer> saveCustomer(@Valid @RequestBody Customer customer) {
 		
@@ -37,13 +38,11 @@ public class CustomerController {
 		return new ResponseEntity<Customer>(cus,HttpStatus.CREATED);
 	}
 	
-	//http://localhost:9999/getAllCustomer
 	@GetMapping("/getAllCustomer")
 	public List<Customer> getAllCustomer()throws GlobalException {
 		return customerService.getAllCustomer();
 	}
 	
-	//http://localhost:9999/deleteCustomerById/{custid}
 	@DeleteMapping("/deleteCustomerById/{custid}")
 	List<Customer> deleteCustomerById(@PathVariable("custid") Integer customerid) throws GlobalException {
 		return customerService.deleteCustomerById(customerid);
@@ -54,38 +53,37 @@ public class CustomerController {
 	Customer updateCustomerById(@PathVariable("custid") Integer customerid ,@Valid @RequestBody Customer customer){
 		return customerService.updateCustomerById(customerid,customer);
 	}
+
 	
-	
-	//http://localhost:9999/getCustomerByEmail/{email}/{password} - sign in get by email
+	//sign in get by email
 	@GetMapping("/getCustomerByEmail/{email}/{password}")
 	public Customer getCustomerByEmail(@PathVariable("email") String email,@PathVariable("password") String password) {
 		return customerService.getCustomerByEmail(email,password);
 	}
 	
-	//http://localhost:9999/getCustomerById/{custid}
 	@GetMapping("/getCustomerById/{custid}")
 	public Customer getCustomerById(@PathVariable("custid") Integer customerid) {
 		return customerService.getCustomerById(customerid);
 	}
 	
-	//http://localhost:9999/updateCustomerAddByid/{custid}
 	@PutMapping("/updateCustomerAddByid/{custid}")
 	public Customer updateCustomerAddByid(@PathVariable("custid") Integer customerid,@RequestBody CustomerAddress cob) {
 		return customerService.updateCustomerAddByid(customerid,cob);
 	}
 	
-	//http://localhost:9999/getCustomerByEmail/{email}
 	@GetMapping("/getCustomerByEmail/{email}")
 	public Customer getCustomerByEmail1(@PathVariable("email") String email) {
 		return customerService.getCustomerByEmail(email);
 	}
 	
-	//http://localhost:9999/getCustomerAddByEmail/{email}
 	@GetMapping("/getCustomerAddByEmail/{email}")
 	public Set<CustomerAddress> getCustomerAddByEmail(@PathVariable("email") String email) {
 		return customerService.getCustomerAddByEmail(email);
 	}
 	
+	
+	
+
 	
 }
 

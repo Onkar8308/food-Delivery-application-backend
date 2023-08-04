@@ -13,13 +13,14 @@ public interface CustomerAddressService {
 
 	public List<CustomerAddress> getAllCustomerAddress();
 
-	public void deleteCustomerAddressById(Integer addressid) throws GlobalException;
+	public List<CustomerAddress> deleteCustomerAddressById(Integer addressid) throws GlobalException;
 
 	public CustomerAddress updateCustomerAddressById(Integer addressid, CustomerAddress customeraddress) throws GlobalException;
 
-	public CustomerAddress customerAssigncustomeraddress(Integer custid, Integer addid);
+	
+
+	CustomerAddress customerAssigncustomeraddress(Integer custid, Integer addid);
 
 	public CustomerAddress getCustomerAddById(Integer id);
-
 
 }

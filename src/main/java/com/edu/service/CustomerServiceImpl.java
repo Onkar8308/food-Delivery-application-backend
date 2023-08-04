@@ -17,44 +17,53 @@ import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
 import com.edu.repository.CustomerAddressRepository;
 import com.edu.repository.CustomerRepository;
+import com.edu.repository.FoodCartRepository;
+import com.edu.repository.OrderREpository;
 import com.edu.service.CustomerService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
-	
+
 	@Autowired
 	private CustomerAddressRepository cusAddRepo;
+	
+	@Autowired
+	private OrderREpository orderRepo;
+	
+	@Autowired
+	private FoodCartRepository cartRepo;
 
 	@Override
 	public Customer saveCustomer(Customer customer) {
-		// TODO Auto-generated method stub
+
 		return customerRepository.save(customer);
 	}
 
 	@Override
 	public List<Customer> getAllCustomer() {
-		// TODO Auto-generated method stub
+
 		return customerRepository.findAll();
 	}
 
-	
-
 	@Override
 	public List<Customer> deleteCustomerById(Integer customerid) {
-		// TODO Auto-generated method stub
+
+		
+		orderRepo.deleteOrderByCustId(customerid);
+		cartRepo.deletecartByCustId(customerid);
+		cusAddRepo.deleteCustomerAddbyCustId(customerid);
 		customerRepository.deleteById(customerid);
 		return customerRepository.findAll();
 	}
 
-
 	@Override
 	public Customer updateCustomerById(Integer customerid, @Valid Customer customer) {
-		// TODO Auto-generated method stub
+
 		Customer cus = customerRepository.findById(customerid).get();
-		if(cus!=null) {
+		if (cus != null) {
 			cus.setCustomername(customer.getCustomername());
 			cus.setCustomermobilenumber(customer.getCustomermobilenumber());
 			cus.setCustomeremail(customer.getCustomeremail());
@@ -64,69 +73,64 @@ public class CustomerServiceImpl implements CustomerService {
 		return cus;
 	}
 
-	//login
 	@Override
-	public Customer getCustomerByEmail(String email,String password) {
-		// TODO Auto-generated method stub
-		Customer cust = customerRepository.getCustomerByEmail(email,password);
+	public Customer getCustomerByEmail(String email, String password) {
+
+		Customer cust = customerRepository.getCustomerByEmail(email, password);
 		System.out.println(cust);
 		return cust;
 	}
 
 	@Override
 	public Customer getCustomerById(Integer customerid) {
-		// TODO Auto-generated method stub
+
 		return customerRepository.findById(customerid).get();
 	}
 
 	@Override
 	public Customer updateCustomerAddByid(Integer customerid, CustomerAddress cob) {
-		// TODO Auto-generated method stub
+
 		Optional<Customer> cus = customerRepository.findById(customerid);
 
-		if(cus.isPresent()) {
+		if (cus.isPresent()) {
 			Customer customer = customerRepository.findById(customerid).get();
 			Set<CustomerAddress> add = customer.getCob();
-			if(add.isEmpty()) {
+			if (add.isEmpty()) {
 				Set<CustomerAddress> newaddress = new HashSet<>();
 				newaddress.add(cusAddRepo.save(cob));
-				int id=cob.getAddressid();
-				CustomerAddress newadd=cusAddRepo.findById(id).get();
-				Customer dob= customerRepository.findById(id).get();
+				int id = cob.getAddressid();
+				CustomerAddress newadd = cusAddRepo.findById(id).get();
+				Customer dob = customerRepository.findById(id).get();
 				newadd.addressAssignedCustomer(dob);
 				customer.setCob(newaddress);
 				return customerRepository.save(customer);
-			}
-			else {
+			} else {
 				add.add(cusAddRepo.save(cob));
-				int id=cob.getAddressid();
-				CustomerAddress newadd=cusAddRepo.findById(id).get();
-				Customer dob= customerRepository.findById(id).get();
+				int id = cob.getAddressid();
+				CustomerAddress newadd = cusAddRepo.findById(id).get();
+				Customer dob = customerRepository.findById(id).get();
 				newadd.addressAssignedCustomer(dob);
+
 				return customerRepository.save(dob);
 			}
-		}
-		else {
+		} else {
 			return null;
 		}
 	}
 
 	@Override
 	public Customer getCustomerByEmail(String email) {
-		// TODO Auto-generated method stub
-	return	customerRepository.getCustomerByEmail1(email);
-		
+
+		return customerRepository.getCustomerByEmail1(email);
+
 	}
 
 	@Override
 	public Set<CustomerAddress> getCustomerAddByEmail(String email) {
 		Customer customer = customerRepository.getCustomerByEmail1(email);
-		// TODO Auto-generated method stub
-	Set<CustomerAddress> cutomerAddList = customer.getCob();
+
+		Set<CustomerAddress> cutomerAddList = customer.getCob();
 		return cutomerAddList;
 	}
-
-	
-
 
 }

@@ -16,7 +16,7 @@ import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
 import com.edu.repository.FoodCartRepository;
 import com.edu.repository.ItemRepository;
-import com.edu.repository.OrdersRepository;
+import com.edu.repository.OrderREpository;
 import com.edu.repository.RestaurantRepository;
 
 @Service
@@ -27,15 +27,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 	
 	@Autowired
 	private ItemRepository itemRepository;
-	
+
 	@Autowired
 	private FoodCartRepository cartRepo;
 	
 	@Autowired
-	private OrdersRepository orderRepo;
+	private OrderREpository orderRepo;
 	
 	public static List<Item> newList = new ArrayList<>();
-
 	@Override
 	public Restaurant saveRestaurant(Restaurant restaurant) {
 		// TODO Auto-generated method stub
@@ -150,9 +149,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 		}
 		
 		
-	} 
-
-	
+	}
 
 	@Override
 	public Restaurant getRestaurantById(Integer restid) {
@@ -165,14 +162,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		 return restaurantRepository.getRestaurantByEmail(email,password);
 	}
-	
+
 	@Override
 	public Integer getRestaurantByEmail(String email) {
 		// TODO Auto-generated method stub
 		
 		return restaurantRepository.getRestaurantByEmail(email);
 	}
-	
+
 	@Override
 	public List<Item> viewOrdersByRestauranat(Integer id) {
 		// TODO Auto-generated method stub
@@ -194,5 +191,4 @@ public class RestaurantServiceImpl implements RestaurantService {
 			
 
 	}
-
 }

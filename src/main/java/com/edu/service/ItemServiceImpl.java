@@ -44,6 +44,8 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepository.findAll();
 	}
 
+
+
 	@Override
 	public Item updateItemById(Integer itemid, Item item)
 			throws GlobalException {
@@ -77,6 +79,8 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemRepository.getItemByRestId(addressid);
 	}
+
+
 	
 	@Override
 	public Item saveItemByRestId(Item item, Integer restid) throws GlobalException {
@@ -87,6 +91,7 @@ public class ItemServiceImpl implements ItemService {
 			throw new GlobalException(restid+ " is not present");
 		}
 		else {
+
 			Restaurant restaurant = restaurantRepository.findById(restid).get();
 			List<Item> list = restaurant.getItem();
 			if(list.isEmpty()){
@@ -109,7 +114,9 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		System.out.println(itemid);
 		
-		itemRepository.deleteById(itemid);		
+		itemRepository.deleteById(itemid);
+		
+				
 		return itemRepository.getItemByRestId(restid);
 	}
 
@@ -118,4 +125,6 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemRepository.findById(itemid).get();
 	}
+	
+
 }

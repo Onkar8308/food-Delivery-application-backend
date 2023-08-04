@@ -28,39 +28,40 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	//http://localhost:9999/saveAdmin - It is used for save Admin details
+	//http://localhost:8990/saveAdmin
 	@PostMapping("/saveAdmin")
 	public ResponseEntity<Admin> saveAdmin(@Valid @RequestBody Admin admin){
 		Admin ad = adminService.saveAdmin(admin);
 		return new ResponseEntity<Admin>(ad,HttpStatus.CREATED);
 	}
 
-	//http://localhost:9999/getAllAdmin  - It is used for fetch the details of existing Admin
+	//http://localhost:8990/getAllAdmin
 	@GetMapping("/getAllAdmin")
 	List<Admin> getAllAdmin(){
 		return adminService.getAllAdmin();
 	}
 	
-	//http://localhost:9999/deleteAdminById/adminid - It is used for Delete Admin By Admin Id
+	//http://localhost:8990/deleteAdminById/adminid
 	@DeleteMapping("/deleteAdminById/{adminid}")
 	String deleteAdminById(@PathVariable("adminid") Integer adminid) throws GlobalException {
 		adminService.deleteAdminById(adminid);
 		return "Record Deleted";
 	}
 	
-	//http://localhost:9999/updateAdminById/{adminid} - It is Used to update Admin By Admin Id
+	//http://localhost:8990/updateAdminById/{adminid}
 	@PutMapping("/updateAdminById/{adminid}")
 	Admin updateAdminById(@PathVariable("adminid") Integer adminid, @Valid @RequestBody Admin admin) throws GlobalException {
 		return adminService.updateAdminById(adminid, admin);
 	}
 	
-	//http://localhost:9999/getAdminById/{adminId} - It is used to fetch Admin Data By Admin ID
-	@GetMapping("/getAdminById/{adminId}")
-	public Admin getAdminById(@PathVariable("adminId") Integer adminid) {
+
+
+
+	@GetMapping("/getAdminById/{custid}")
+	public Admin getAdminById(@PathVariable("custid") Integer adminid) {
 		return adminService.getAdminById(adminid);
 	}
 	
-	//http://localhost:9999/getAdminByusername/{username}/{password} - It is Used to fetch Admin By username & password
 	@GetMapping("/getAdminByusername/{username}/{password}")
 	public Admin getAdminByusername(@PathVariable("username") String username,@PathVariable("password") String password) {
 		return adminService.getAdminByusername(username,password);

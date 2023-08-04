@@ -23,13 +23,7 @@ public interface FoodCartRepository extends JpaRepository<FoodCart, Integer>{
 	
 	@Query(value = " select * from food_cart where  payment_status='unpaid'and cust_id=?1",nativeQuery = true)
 	public FoodCart getCartByvalidItem(Integer id);
-	
-	@Transactional
-	@Modifying
-	@Query(value = "delete from food_cart where cust_id=?1",nativeQuery = true)
-	public void deletCartByCustomer(Integer custID); 
-	
-	
+
 	@Query(value = "select * from food_cart where  payment_status='paid'",nativeQuery = true)
 	List<FoodCart> findCartByStatusPaid();
 	
@@ -37,5 +31,9 @@ public interface FoodCartRepository extends JpaRepository<FoodCart, Integer>{
 	@Modifying
 	@Query(value = "delete  from food_cart where cust_id=?1",nativeQuery = true)
 	public void deletecartByCustId(Integer custId);
+	
+	 
+	
+	
 
 }

@@ -44,10 +44,10 @@ public class ItemController {
 	@DeleteMapping("/deleteItemById/{itemid}/{restid}")
 	public List<Item> deleteItemById(@PathVariable Integer itemid, @PathVariable Integer restid) {
 		return itemService.deleteItemById(itemid,restid);
-
+//		return "delete";
 	}
 	
-
+//	
 
 	// http://localhost:8990/updateItemById/{itemid}
 	@PutMapping("/updateItemById/{itemid}")
@@ -78,6 +78,7 @@ public class ItemController {
 	public Item getItemById(@PathVariable Integer itemid) {
 		return itemService.getItemById(itemid);
 	}
+	
 	
 	
 
