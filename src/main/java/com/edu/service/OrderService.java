@@ -9,7 +9,10 @@ import com.edu.dao.Orders;
 
 @Service
 public interface OrderService {
-	public void saveOrder(Integer custid, Integer restid, Integer itemid, Integer cartid);
+	
+//	public void saveOrder(Integer custid, Integer restid, Integer itemid, Integer cartid);
+	
+	public void saveOrder(Integer custid, Integer restid, Integer itemid, Integer cartid,Integer intitalQuantity);
 	
 	public List<Orders> getORderbyRestId(Integer id);
 
@@ -22,4 +25,6 @@ public interface OrderService {
 	public List<Orders> getOrderByCustomerIdAndStatusPaid(Integer custId);
 
 	public String deleteOrderById(Integer orderId);
+	
+	
 }

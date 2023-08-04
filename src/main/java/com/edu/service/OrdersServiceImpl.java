@@ -21,9 +21,16 @@ public class OrdersServiceImpl implements OrderService {
 	private OrdersRepository orderRepo;
 
 	@Override
-	public void saveOrder(Integer custid, Integer restid, Integer itemid, Integer cartid) {
+	public void saveOrder(Integer custid, Integer restid, Integer itemid, Integer cartid,Integer intitalQuantity) {
+		Orders existingorder =orderRepo.isOrderExist(custid, itemid, cartid, restid);			
+		if(existingorder==null) {			
+			orderRepo.saveOrder("unpaid",custid, restid, itemid, cartid,intitalQuantity);
+		}
+		else {			
+			existingorder.setQuantity(intitalQuantity);
+			orderRepo.save(existingorder);
+		}
 		
-		 orderRepo.saveOrder("unpaid",custid, restid, itemid, cartid);
 
 	}
 

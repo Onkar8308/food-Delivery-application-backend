@@ -20,4 +20,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	@Query(value="delete from item where itemid=:itemid and restid=:restid", nativeQuery = true)
 	List<Item> deleteItemById(Integer itemid, Integer restid);
 	
+	
+	
 }

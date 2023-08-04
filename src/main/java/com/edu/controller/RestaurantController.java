@@ -93,4 +93,9 @@ public class RestaurantController {
 	public Integer getRestaurantByEmail(@PathVariable("email") String Email) {
 		return restaurantService.getRestaurantByEmail( Email);
 	}
+	
+	@GetMapping("/viewOrdersByRestaurant/{id}")
+	public List<Item> viewOrdersByRestauranat(@PathVariable("id") Integer id) {
+		return restaurantService.viewOrdersByRestauranat(id);
+	}
 }

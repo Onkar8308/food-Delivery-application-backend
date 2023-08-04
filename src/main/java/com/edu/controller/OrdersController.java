@@ -21,10 +21,10 @@ public class OrdersController {
 	@Autowired
 	private OrderService orderService;
 	
-	@GetMapping("/saveOrder/customerid/{custid}/restid/{restid}/itemid/{itemid}/cartid/{cartid}")
+	@GetMapping("/saveOrder/customerid/{custid}/restid/{restid}/itemid/{itemid}/cartid/{cartid}/quantity/{intitalQuantity}")
 	public String saveOrder(@PathVariable Integer custid, @PathVariable Integer restid, @PathVariable Integer itemid,
-			@PathVariable Integer cartid) {
-		 orderService.saveOrder(custid, restid, itemid, cartid);
+			@PathVariable Integer cartid,@PathVariable("intitalQuantity")Integer intitalQuantity) {
+		 orderService.saveOrder(custid, restid, itemid, cartid,intitalQuantity);
 		 return "hey";		
 	}
 	

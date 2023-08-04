@@ -10,10 +10,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.edu.dao.FoodCart;
 import com.edu.dao.Item;
 import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
+import com.edu.repository.FoodCartRepository;
 import com.edu.repository.ItemRepository;
+import com.edu.repository.OrdersRepository;
 import com.edu.repository.RestaurantRepository;
 
 @Service
@@ -24,6 +27,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 	
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired
+	private FoodCartRepository cartRepo;
+	
+	@Autowired
+	private OrdersRepository orderRepo;
+	
+	public static List<Item> newList = new ArrayList<>();
 
 	@Override
 	public Restaurant saveRestaurant(Restaurant restaurant) {
@@ -45,6 +56,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 			throw new GlobalException("Restaurant Address id=" + restid + " does not exist");
 		}
 	
+		orderRepo.deleteOrderByRestId(restid);
 		 restaurantRepository.deleteById(restid);
 		return restaurantRepository.findAll();
 	}
@@ -160,4 +172,27 @@ public class RestaurantServiceImpl implements RestaurantService {
 		
 		return restaurantRepository.getRestaurantByEmail(email);
 	}
+	
+	@Override
+	public List<Item> viewOrdersByRestauranat(Integer id) {
+		// TODO Auto-generated method stub
+		List<FoodCart> AllCart =cartRepo.findCartByStatusPaid();
+		for(int i=0;i<AllCart.size();i++) {
+			FoodCart cart = AllCart.get(i);
+			List<Item> itemListInCart = cart.getItemList();
+//			for(int j=0;j<itemListInCart.size();j++) {
+				Item item1 = itemListInCart.get(i);
+				Restaurant res = item1.getRest();
+				if(id == res.getRestid()) {
+				Item item = itemListInCart.get(i);
+				newList.add(item1);
+				return newList;
+				}
+//			}
+		}
+		return null;
+			
+
+	}
+
 }

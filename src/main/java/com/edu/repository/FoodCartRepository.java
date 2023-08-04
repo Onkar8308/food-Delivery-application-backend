@@ -30,5 +30,12 @@ public interface FoodCartRepository extends JpaRepository<FoodCart, Integer>{
 	public void deletCartByCustomer(Integer custID); 
 	
 	
+	@Query(value = "select * from food_cart where  payment_status='paid'",nativeQuery = true)
+	List<FoodCart> findCartByStatusPaid();
+	
+	@Transactional
+	@Modifying
+	@Query(value = "delete  from food_cart where cust_id=?1",nativeQuery = true)
+	public void deletecartByCustId(Integer custId);
 
 }

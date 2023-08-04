@@ -20,24 +20,43 @@ public class Orders {
 	
 	@Column
 	private String orderDate;
+	
+	@Column
+	private Integer quantity;
 
 	
-	@JsonIgnore
+public Integer getQuantity() {
+		return quantity;
+	}
+
+
+
+
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+
+
+
+
+	//	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name="restid" , referencedColumnName="restid")
 	Restaurant res;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name="itemid" , referencedColumnName="itemid")
 	Item item;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name="customerid" , referencedColumnName="customerid")
 	Customer cus;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name="foodCart_Id" , referencedColumnName="foodCart_Id")
 	FoodCart foodcart;
@@ -52,10 +71,18 @@ public class Orders {
 	
 
 
-	public Orders(String status, String orderDate, Restaurant res, Item item, Customer cus, FoodCart foodcart) {
+	
+
+
+
+
+
+	public Orders(String status, String orderDate, Integer quantity, Restaurant res, Item item, Customer cus,
+			FoodCart foodcart) {
 		super();
 		this.status = status;
 		this.orderDate = orderDate;
+		this.quantity = quantity;
 		this.res = res;
 		this.item = item;
 		this.cus = cus;
@@ -143,9 +170,15 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders [orderid=" + orderid + ", status=" + status + ", orderDate=" + orderDate + ", res=" + res
-				+ ", item=" + item + ", cus=" + cus + ", foodcart=" + foodcart + "]";
+		return "Orders [orderid=" + orderid + ", status=" + status + ", orderDate=" + orderDate + ", quantity="
+				+ quantity + ", res=" + res + ", item=" + item + ", cus=" + cus + ", foodcart=" + foodcart + "]";
 	}
+
+
+
+
+
+	
 
 
 		
