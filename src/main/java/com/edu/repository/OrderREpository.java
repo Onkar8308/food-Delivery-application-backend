@@ -17,19 +17,19 @@ public interface OrderREpository extends JpaRepository<Orders, Integer> {
 	
 	@Transactional
 	@Modifying
-	@Query(value = "insert into orders(status,customerid,restid,itemid,quantity) values(?1,?2,?3,?4,?5)", nativeQuery = true)
-	void saveOrder(String status,Integer custid, Integer restid, Integer itemid,Integer quantity);
+	@Query(value = "insert into orders(status,customerid,restid,itemid,quantity,flag) values(?1,?2,?3,?4,?5,?6)", nativeQuery = true)
+	void saveOrder(String status,Integer custid, Integer restid, Integer itemid,Integer quantity,String flag);
 	
-	@Query(value = " select * from orders where restid=?1 and status='paid'",nativeQuery = true)
+	@Query(value = " select * from orders where restid=?1 and status='paid' and flag='true'",nativeQuery = true)
 	List<Orders> getOrderByrestId(Integer restID);
 	
-	@Query(value = " select * from orders where customerid=?1",nativeQuery = true)
+	@Query(value = " select * from orders where customerid=?1 and flag='true'",nativeQuery = true)
 	List<Orders> getOrderByCustomerID(Integer id);
 
-	@Query(value = " select * from orders where customerid=? and status='paid'",nativeQuery = true)
+	@Query(value = " select * from orders where customerid=? and status='paid' and flag='true'",nativeQuery = true)
 	List<Orders> getOrderByCustomerIdAndStatuPaid(int custId);
 	
-	@Query(value = " select * from orders where customerid=? and status='unpaid'",nativeQuery = true)
+	@Query(value = " select * from orders where customerid=? and status='unpaid' and flag='true'",nativeQuery = true)
 	List<Orders> getOrderByCustomerIdAndStatuUnpaid(int custId);
 	
 	@Transactional
@@ -43,7 +43,7 @@ public interface OrderREpository extends JpaRepository<Orders, Integer> {
 	void deleteOrderByCustId(Integer custId);
 	
 	
-	@Query(value = "select * from orders where customerid=?1 and itemid=?2 and status='unpaid' and restid=?3",nativeQuery = true)
+	@Query(value = "select * from orders where customerid=?1 and itemid=?2 and status='unpaid' and restid=?3  and flag='true'",nativeQuery = true)
 	public Orders isOrderExist(Integer custId,Integer itemId,Integer restId);
 	
 	@Transactional

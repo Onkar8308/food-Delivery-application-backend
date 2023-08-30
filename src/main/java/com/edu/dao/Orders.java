@@ -1,19 +1,8 @@
 package com.edu.dao;
 
-import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.persistence.*;
 
-import org.springframework.lang.NonNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 public class Orders {
@@ -21,6 +10,9 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderid;
+	
+	@Column
+	private String Flag;
 
 	@Column
 	private String status;
@@ -54,16 +46,33 @@ public class Orders {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Orders(String status, String orderDate, Integer quantity, Restaurant res, Item item, Customer cus) {
-		super();
-		this.status = status;
-		this.orderDate = orderDate;
-		this.quantity = quantity;
-		this.res = res;
-		this.item = item;
-		this.cus = cus;
-		
+	
+
+	public Orders(Integer orderid, String flag, String status, String orderDate, Integer quantity, Restaurant res,
+		Item item, Customer cus) {
+	super();
+	this.orderid = orderid;
+	Flag = flag;
+	this.status = status;
+	this.orderDate = orderDate;
+	this.quantity = quantity;
+	this.res = res;
+	this.item = item;
+	this.cus = cus;
+}
+
+
+
+	
+	
+	public String isFlag() {
+		return Flag;
 	}
+	public void setFlag(String flag) {
+		Flag = flag;
+	}
+
+
 
 	public Integer getOrderid() {
 		return orderid;
@@ -121,11 +130,15 @@ public class Orders {
 		this.cus = cus;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Orders [orderid=" + orderid + ", status=" + status + ", orderDate=" + orderDate + ", quantity="
-				+ quantity + ", res=" + res + ", item=" + item + ", cus=" + cus + "]";
+		return "Orders [orderid=" + orderid + ", Flag=" + Flag + ", status=" + status + ", orderDate=" + orderDate
+				+ ", quantity=" + quantity + ", res=" + res + ", item=" + item + ", cus=" + cus + "]";
 	}
+
+	
 
 	
 

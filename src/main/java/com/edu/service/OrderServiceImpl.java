@@ -24,7 +24,8 @@ public class OrderServiceImpl implements OrderService {
 	public void saveOrder(Integer custid, Integer restid, Integer itemid,Integer intitalQuantity) {
 		Orders existingorder =orderRepo.isOrderExist(custid,restid, itemid);			
 		if(existingorder==null) {			
-			orderRepo.saveOrder("unpaid",custid, restid, itemid,intitalQuantity);
+			
+			orderRepo.saveOrder("unpaid",custid, restid, itemid,intitalQuantity,"true");
 		}
 		else {			
 			existingorder.setQuantity(intitalQuantity);
@@ -78,14 +79,18 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public String deleteOrderById(Integer orderId) {
 		// TODO Auto-generated method stub
-		 orderRepo.deleteById(orderId);
+		 Orders order= orderRepo.findById(orderId).get();
+		 order.setFlag("false");
+		 orderRepo.save(order);
 		 return "orderDeleted";
 	}
 
 	@Override
 	public String deleteOrderhistory(Integer custId) {
 		// TODO Auto-generated method stub
-		 orderRepo.deleteOrderHistory(custId);
+		 Orders order = orderRepo.findById(custId).get();
+		 order.setFlag("false");
+		 orderRepo.save(order);
 		 return "deleted";
 		 }
 
