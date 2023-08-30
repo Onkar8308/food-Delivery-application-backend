@@ -47,17 +47,14 @@ public class Orders {
 	Customer cus;
 
 //	@JsonIgnore
-	@ManyToOne()
-	@JoinColumn(name = "foodCart_Id", referencedColumnName = "foodCart_Id")
-	FoodCart foodcart;
+	
 
 	public Orders() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Orders(String status, String orderDate, Integer quantity, Restaurant res, Item item, Customer cus,
-			FoodCart foodcart) {
+	public Orders(String status, String orderDate, Integer quantity, Restaurant res, Item item, Customer cus) {
 		super();
 		this.status = status;
 		this.orderDate = orderDate;
@@ -65,7 +62,7 @@ public class Orders {
 		this.res = res;
 		this.item = item;
 		this.cus = cus;
-		this.foodcart = foodcart;
+		
 	}
 
 	public Integer getOrderid() {
@@ -124,19 +121,15 @@ public class Orders {
 		this.cus = cus;
 	}
 
-	public FoodCart getFoodcart() {
-		return foodcart;
-	}
-
-	public void setFoodcart(FoodCart foodcart) {
-		this.foodcart = foodcart;
-	}
-
 	@Override
 	public String toString() {
 		return "Orders [orderid=" + orderid + ", status=" + status + ", orderDate=" + orderDate + ", quantity="
-				+ quantity + ", res=" + res + ", item=" + item + ", cus=" + cus + ", foodcart=" + foodcart + "]";
+				+ quantity + ", res=" + res + ", item=" + item + ", cus=" + cus + "]";
 	}
+
+	
+
+	
 
 	
 	

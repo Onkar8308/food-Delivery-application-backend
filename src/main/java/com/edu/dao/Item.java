@@ -49,10 +49,7 @@ public class Item {
 	
 	
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="cartId" , referencedColumnName="foodCart_Id")
-	FoodCart cart; 
+	
 	
 
 
@@ -149,8 +146,5 @@ public class Item {
 
 
 
-	public void assignCart(FoodCart cart) {
-		// TODO Auto-generated method stub
-		this.cart = cart;
-	}
+	
 }

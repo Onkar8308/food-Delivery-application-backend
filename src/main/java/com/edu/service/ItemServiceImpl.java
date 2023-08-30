@@ -11,11 +11,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.edu.dao.FoodCart;
 import com.edu.dao.Item;
 import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
-import com.edu.repository.FoodCartRepository;
 import com.edu.repository.ItemRepository;
 import com.edu.repository.RestaurantRepository;
 
@@ -29,9 +27,7 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 	
-	@Autowired
-	private FoodCartRepository cartRepo;
-
+	
 	@Override
 	public Item saveItem(Item item) {
 		// TODO Auto-generated method stub
