@@ -20,7 +20,7 @@ public interface OrderREpository extends JpaRepository<Orders, Integer> {
 	@Query(value = "insert into orders(status,customerid,restid,itemid,quantity,flag) values(?1,?2,?3,?4,?5,?6)", nativeQuery = true)
 	void saveOrder(String status,Integer custid, Integer restid, Integer itemid,Integer quantity,String flag);
 	
-	@Query(value = " select * from orders where restid=?1 and status='paid' and flag='true'",nativeQuery = true)
+	@Query(value = " select * from orders where restid=?1 and status='paid' ",nativeQuery = true)
 	List<Orders> getOrderByrestId(Integer restID);
 	
 	@Query(value = " select * from orders where customerid=?1 and flag='true'",nativeQuery = true)
@@ -31,6 +31,8 @@ public interface OrderREpository extends JpaRepository<Orders, Integer> {
 	
 	@Query(value = " select * from orders where customerid=? and status='unpaid' and flag='true'",nativeQuery = true)
 	List<Orders> getOrderByCustomerIdAndStatuUnpaid(int custId);
+	
+	
 	
 	@Transactional
 	@Modifying
