@@ -88,9 +88,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public String deleteOrderhistory(Integer custId) {
 		// TODO Auto-generated method stub
-		 Orders order = orderRepo.findById(custId).get();
-		 order.setFlag("false");
-		 orderRepo.save(order);
+		 List<Orders> order = orderRepo.getOrderByCustomerIdAndStatuPaid(custId);
+		 for(int i =0;i<order.size();i++) {
+			 Orders currentorder= order.get(i); 
+			 currentorder.setFlag("false");
+			 orderRepo.save(currentorder);
+		 }
 		 return "deleted";
 		 }
 
