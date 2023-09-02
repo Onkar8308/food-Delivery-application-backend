@@ -11,13 +11,13 @@ public class Orders {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderid;
 	
-	@Column
+	@Column(length = 5)
 	private String Flag;
 
-	@Column
+	@Column(length = 6)
 	private String status;
 	
-	@Column
+	@Column(length = 30)
 	private String orderDate;
 	
 	@Column

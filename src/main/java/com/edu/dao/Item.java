@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import com.edu.service.RestaurantService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,18 +28,19 @@ public class Item {
 
 	@NotEmpty(message = "Item name cannot be null")
 	@NotBlank(message = "Item name cannot be null")
-	@Column(length = 50, nullable = false)
+	@Column(length = 25, nullable = false)
+	@Pattern(regexp = "[a-zA-Z][a-zA-Z ]+$")
 	private String itemname;
 
 	@NotEmpty(message = "Item name cannot be null")
 	@NotBlank(message = "Item name cannot be null")
-	@Column(nullable = false)
+	@Column(nullable = false, length = 15)
 	private String itemstatus;
 
 	@Column(nullable = false)
 	private Double itemcost;
 	
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String itemimage;
 	
 	
