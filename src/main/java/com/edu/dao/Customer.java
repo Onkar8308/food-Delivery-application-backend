@@ -39,7 +39,7 @@ public class Customer {
 
 	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "enter proper password")
 	@Column(length = 20)
-	private String password;
+	private String customerpassword;
 
 	
 	@OneToMany(mappedBy = "cust")
@@ -58,13 +58,13 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String customername, String customermobilenumber, String customeremail, String password) {
+	public Customer(String customername, String customermobilenumber, String customeremail, String customerpassword) {
 
 		super();
 		this.customername = customername;
 		this.customermobilenumber = customermobilenumber;
 		this.customeremail = customeremail;
-		this.password = password;
+		this.customerpassword = customerpassword;
 
 	}
 
@@ -101,17 +101,17 @@ public class Customer {
 	}
 
 	public String getPassword() {
-		return password;
+		return customerpassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String customerpassword) {
+		this.customerpassword = customerpassword;
 	}
 
 	@Override
 	public String toString() {
 		return "Customer [customerid=" + customerid + ", customername=" + customername + ", customermobilenumber="
-				+ customermobilenumber + ", customeremail=" + customeremail + ", password=" + password + ", cob=" + cob
+				+ customermobilenumber + ", customeremail=" + customeremail + ", password=" + customerpassword + ", cob=" + cob
 				+ "]";
 	}
 
