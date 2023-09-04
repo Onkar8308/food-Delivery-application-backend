@@ -60,10 +60,6 @@ public class Orders {
 	this.item = item;
 	this.cus = cus;
 }
-
-
-
-	
 	
 	public String isFlag() {
 		return Flag;
@@ -71,8 +67,6 @@ public class Orders {
 	public void setFlag(String flag) {
 		Flag = flag;
 	}
-
-
 
 	public Integer getOrderid() {
 		return orderid;
@@ -137,13 +131,6 @@ public class Orders {
 		return "Orders [orderid=" + orderid + ", Flag=" + Flag + ", status=" + status + ", orderDate=" + orderDate
 				+ ", quantity=" + quantity + ", res=" + res + ", item=" + item + ", cus=" + cus + "]";
 	}
-
-	
-
-	
-
-	
-
 	
 	
 }

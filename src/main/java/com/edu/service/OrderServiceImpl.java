@@ -18,12 +18,14 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void saveOrder(Integer custid, Integer restid, Integer itemid,Integer intitalQuantity) {
-		Orders existingorder =orderRepo.isOrderExist(custid,restid, itemid);			
+		Orders existingorder =orderRepo.isOrderExist(custid,restid, itemid);	
+		System.out.println(existingorder);
 		if(existingorder==null) {			
-			
+			System.out.println("Under if");
 			orderRepo.saveOrder("unpaid",custid, restid, itemid,intitalQuantity,"true");
 		}
-		else {			
+		else {	
+			System.out.println("Under else");
 			existingorder.setQuantity(intitalQuantity);
 			orderRepo.save(existingorder);
 		}

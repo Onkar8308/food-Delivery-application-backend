@@ -82,7 +82,6 @@ public class Restaurant {
 	@Column(unique = true, length = 30)
 	private String email;
 		
-//		@Column(unique = true)
 	@Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}", message = "Invalid Password")
 	@Column(nullable = false, length = 20)
 	private String password;
