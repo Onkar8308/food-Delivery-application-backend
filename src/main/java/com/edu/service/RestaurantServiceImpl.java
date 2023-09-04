@@ -1,15 +1,9 @@
 package com.edu.service;
 
-import java.awt.print.Pageable;
+
 import java.util.*;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.edu.dao.Item;
 import com.edu.dao.Restaurant;
 import com.edu.error.GlobalException;
@@ -140,7 +134,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 		}
 		else {
 		List<Restaurant>ress= restaurantRepository.findByRestnameContainingIgnoreCase(searchkey);
-		System.out.println("nidhi"+ress);
+		System.out.println("ress="+ress);
 		return ress;
 		}
 		
