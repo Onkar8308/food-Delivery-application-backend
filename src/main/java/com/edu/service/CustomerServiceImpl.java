@@ -12,13 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.edu.dao.Customer;
 import com.edu.dao.CustomerAddress;
-import com.edu.dao.Item;
-import com.edu.dao.Restaurant;
-import com.edu.error.GlobalException;
 import com.edu.repository.CustomerAddressRepository;
 import com.edu.repository.CustomerRepository;
 import com.edu.repository.OrderREpository;
-import com.edu.service.CustomerService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
