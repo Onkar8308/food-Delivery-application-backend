@@ -71,7 +71,7 @@ public class CustomerController {
 		return customerService.updateCustomerAddByid(customerid,cob);
 	}
 	
-	@GetMapping("/getCustomerByEmail/{email}")
+	@GetMapping("/getCustomerByEmail1/{email}")
 	public Customer getCustomerByEmail1(@PathVariable("email") String email) {
 		return customerService.getCustomerByEmail(email);
 	}
