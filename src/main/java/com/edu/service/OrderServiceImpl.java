@@ -29,8 +29,6 @@ public class OrderServiceImpl implements OrderService {
 			existingorder.setQuantity(intitalQuantity);
 			orderRepo.save(existingorder);
 		}
-		
-
 	}
 
 	@Override
@@ -70,8 +68,7 @@ public class OrderServiceImpl implements OrderService {
 		 DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
 		 String formattedDate= dateFormat.format(date);
 		order.setOrderDate(formattedDate);
-		return orderRepo.save(order);
-		
+		return orderRepo.save(order);	
 	}
 
 	@Override

@@ -128,8 +128,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 			  if(res!=null) 
 			  { res= restaurantRepository.searchByStatus(res); } else 
 			  {
-			  res=null; }
-			 
+			  res=null; } 
 			return res;
 		}
 		else {
